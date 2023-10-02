@@ -1,14 +1,30 @@
 <template>
-  <router-view />
+  <component :is="currentLayout">
+    <router-view />
+  </component>
 </template>
 
 <script>
-//import HelloWorld from "./components/HelloWorld.vue";
+import { computed } from "vue";
+import { useRouter } from "vue-router";
+
 export default {
   name: "App",
-  // components: {
-  //   HelloWorld,
-  // },
+  setup() {
+    const router = useRouter();
+
+    const currentLayout = computed(() => {
+      // Determine which layout to use based on the route
+      const route = router.currentRoute.value;
+      if (route.meta.layout === "admin") return "AdminLayout";
+
+      return "DefaultLayout";
+    });
+
+    return {
+      currentLayout,
+    };
+  },
 };
 </script>
 
@@ -19,6 +35,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
