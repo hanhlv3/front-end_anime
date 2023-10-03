@@ -14,7 +14,7 @@
           <div class="flex flex-col justify-between space-y-[10px]">
             <router-link
               :to="{ name: 'HomeAdmin' }"
-              class="inline-flex relative items-center py-[10px] px-[10px] w-full text-lg font-medium rounded-md border-gray-200 hover:bg-gray-200 hover:text-gray-800 transition duration-400 ease-in-out"
+              class="inline-flex relative items-center py-[10px] px-[10px] w-full text-lg font-medium rounded-md border-gray-200 hover:bg-gray-200 hover:text-gray-800 transition duration-400 ease-linear"
               :class="{ 'bg-gray-200 text-gray-800': sideBar === 'home' }"
             >
               <svg
@@ -32,7 +32,7 @@
             </router-link>
             <router-link
               to="/profile"
-              class="inline-flex relative items-center py-[10px] px-[10px] w-full text-lg font-medium rounded-md border-gray-200 hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-in-out"
+              class="inline-flex relative items-center py-[10px] px-[10px] w-full text-lg font-medium rounded-md border-gray-200 hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-linear"
               :class="{ 'bg-gray-200 text-gray-800': sideBar === 'user' }"
             >
               <svg
@@ -52,7 +52,7 @@
             </router-link>
             <router-link
               to="#"
-              class="flex relative items-center py-[10px] px-[10px] w-full text-lg font-medium rounded-md border-gray-200 hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-in-out"
+              class="flex relative items-center py-[10px] px-[10px] w-full text-lg font-medium rounded-md border-gray-200 hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-linear"
               @click="toggleCategory"
             >
               <div class="inline-flex relative items-center">
@@ -73,16 +73,15 @@
               </div>
             </router-link>
             <div
-              class="flex-col ml-10 transition duration-400 ease-in-out"
-              v-show="
-                showCategory ||
-                sideBar == 'add-category' ||
-                sideBar == 'category-list'
-              "
+              class="flex-col ml-10 transition duration-400 ease-linear"
+              v-show="showCategory"
             >
               <router-link
-                to="#"
-                class="block flex relative items-center py-[5px] px-[5px] rounded-md border-gray-200 hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-in-out"
+                :to="{ name: 'CategoryList' }"
+                class="block flex relative items-center py-[5px] px-[5px] rounded-md border-gray-200 hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-linear"
+                :class="{
+                  'bg-gray-200 text-gray-800': sideBar === 'category-list',
+                }"
               >
                 <svg
                   class="mr-2 w-[15px] h-[15px] fill-current"
@@ -98,8 +97,11 @@
                 Category list
               </router-link>
               <router-link
-                to="#"
-                class="block flex relative items-center py-[5px] px-[5px] rounded-md border-gray-200 hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-in-out"
+                :to="{ name: 'AddCategory' }"
+                class="block flex relative items-center py-[5px] px-[5px] rounded-md border-gray-200 hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-linear"
+                :class="{
+                  'bg-gray-200 text-gray-800': sideBar === 'add-category',
+                }"
               >
                 <svg
                   class="mr-2 w-[15px] h-[15px] fill-current"
@@ -117,7 +119,7 @@
             </div>
             <router-link
               to="#"
-              class="inline-flex relative items-center py-[10px] px-[10px] w-full text-lg font-medium rounded-md rounded-b-lg hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-in-out"
+              class="inline-flex relative items-center py-[10px] px-[10px] w-full text-lg font-medium rounded-md rounded-b-lg hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-linear"
               @click="toggleFilm"
             >
               <svg
@@ -133,15 +135,10 @@
               </svg>
               Film
             </router-link>
-            <div
-              class="flex-col ml-10"
-              v-show="
-                showFilm || sideBar == 'add-film' || sideBar == 'film-list'
-              "
-            >
+            <div class="flex-col ml-10" v-show="showFilm">
               <router-link
-                to="#"
-                class="block flex relative items-center py-[5px] px-[5px] rounded-md border-gray-200 hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-in-out"
+                :to="{ name: 'FilmList' }"
+                class="block flex relative items-center py-[5px] px-[5px] rounded-md border-gray-200 hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-linear"
                 :class="{
                   'bg-gray-200 text-gray-800': sideBar === 'film-list',
                 }"
@@ -160,8 +157,8 @@
                 Film list
               </router-link>
               <router-link
-                to="#"
-                class="block flex relative items-center py-[5px] px-[5px] rounded-md border-gray-200 hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-in-out"
+                :to="{ name: 'AddFilm' }"
+                class="block flex relative items-center py-[5px] px-[5px] rounded-md border-gray-200 hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-linear"
                 :class="{
                   'bg-gray-200 text-gray-800': sideBar === 'add-film',
                 }"
@@ -182,7 +179,7 @@
             </div>
             <router-link
               to="/download"
-              class="inline-flex relative items-center py-[10px] px-[10px] w-full text-lg font-medium rounded-md rounded-b-lg hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-in-out"
+              class="inline-flex relative items-center py-[10px] px-[10px] w-full text-lg font-medium rounded-md rounded-b-lg hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-linear"
             >
               <svg
                 class="mr-2 w-[25px] h-[25px] fill-current"
@@ -202,7 +199,7 @@
             <div>
               <router-link
                 to="/setting"
-                class="inline-flex relative items-center py-[10px] px-[10px] w-full text-lg font-medium rounded-md border-gray-200 hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-in-out"
+                class="inline-flex relative items-center py-[10px] px-[10px] w-full text-lg font-medium rounded-md border-gray-200 hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-linear"
               >
                 <svg
                   class="mr-2 w-[25px] h-[25px] fill-current"
@@ -371,7 +368,7 @@
   </div>
 </template>
 <script>
-import { ref } from "vue";
+import { ref, watchEffect } from "vue";
 import { useRouter } from "vue-router";
 export default {
   name: "AdminLayout",
@@ -383,13 +380,40 @@ export default {
 
     const toggleSideBar = () => (showSide.value = !showSide.value);
     const toggleDrop = () => (showDropDown.value = !showDropDown.value);
-    const toggleCategory = () => (showCategory.value = !showCategory.value);
-    const toggleFilm = () => (showFilm.value = !showFilm.value);
+    const toggleCategory = (event) => {
+      event.preventDefault();
+      showCategory.value = !showCategory.value;
+    };
+    const toggleFilm = (event) => {
+      event.preventDefault();
+      showFilm.value = !showFilm.value;
+    };
 
     const router = useRouter();
-    const route = router.currentRoute.value;
-    const sideBar = route.meta.sideBar;
+    const sideBar = ref(null);
 
+    const route = router.currentRoute.value;
+    sideBar.value = route.meta.sideBar;
+
+    const updateShow = () => {
+      if (sideBar.value === "add-film" || sideBar.value === "film-list")
+        showFilm.value = true;
+      else showFilm.value = false;
+
+      if (sideBar.value === "add-category" || sideBar.value === "category-list")
+        showCategory.value = true;
+      else showCategory.value = false;
+    };
+
+    updateShow();
+
+    // watch
+    watchEffect(() => {
+      const newSideBar = router.currentRoute.value.meta.sideBar;
+      console.log(newSideBar);
+      sideBar.value = newSideBar;
+      updateShow();
+    });
     return {
       showCategory,
       showDropDown,
@@ -405,8 +429,4 @@ export default {
 };
 </script>
 import { userRouter } from ""
-<style scoped>
-ul li a {
-  padding-inline-end: 20px;
-}
-</style>
+<style scoped></style>

@@ -1,10 +1,10 @@
 <template>
-  <h1>This is add film</h1>
+  <h1>this is category list</h1>
 </template>
 
 <script>
 export default {
-  name: "AddFilm",
+  name: "CategoryList",
 };
 </script>
 
