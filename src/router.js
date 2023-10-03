@@ -23,11 +23,18 @@ const routes = [
     component: AdminLayout,
     children: [
       {
+        name: "HomeAdmin",
+        path: "",
+        component: () =>
+          import(/* webpackChunkName: "Home" */ "@/views/admin/home.vue"),
+        meta: { layout: "admin", sideBar: "home" },
+      },
+      {
         name: "AddFilm",
         path: "/admin/addfilm",
         component: () =>
-          import(/* webpackChunkName: "Home" */ "@/views/admin/AddFilm.vue"),
-        meta: { layout: "admin" },
+          import(/* webpackChunkName: "Home" */ "@/views/admin/add_film.vue"),
+        meta: { layout: "admin", sideBar: "add-film" },
       },
     ],
   },
