@@ -15,14 +15,18 @@ export const admin_router = {
       name: "FilmList",
       path: "/admin/film",
       component: () =>
-        import(/* webpackChunkName: "Home" */ "@/views/admin/film_list.vue"),
+        import(
+          /* webpackChunkName: "Home" */ "@/views/admin/film/film_list.vue"
+        ),
       meta: { layout: "admin", sideBar: "film-list" },
     },
     {
       name: "AddFilm",
       path: "/admin/film/add",
       component: () =>
-        import(/* webpackChunkName: "Home" */ "@/views/admin/add_film.vue"),
+        import(
+          /* webpackChunkName: "Home" */ "@/views/admin/film/add_film.vue"
+        ),
       meta: { layout: "admin", sideBar: "add-film" },
     },
     {
@@ -30,7 +34,7 @@ export const admin_router = {
       path: "/admin/category",
       component: () =>
         import(
-          /* webpackChunkName: "Home" */ "@/views/admin/category_list.vue"
+          /* webpackChunkName: "Home" */ "@/views/admin/category/category_list.vue"
         ),
       meta: { layout: "admin", sideBar: "category-list" },
     },
@@ -38,7 +42,9 @@ export const admin_router = {
       name: "AddCategory",
       path: "/admin/category/add",
       component: () =>
-        import(/* webpackChunkName: "Home" */ "@/views/admin/add_category.vue"),
+        import(
+          /* webpackChunkName: "Home" */ "@/views/admin/category/add_category.vue"
+        ),
       meta: { layout: "admin", sideBar: "add-category" },
     },
   ],
