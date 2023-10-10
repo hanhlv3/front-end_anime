@@ -212,7 +212,11 @@
             <tbody
               class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700"
             >
-              <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+              <tr
+                v-for="cat in paginatedCategories"
+                :key="cat.categoryId"
+                class="hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
                 <td class="w-4 p-4">
                   <div class="flex items-center">
                     <input
@@ -227,22 +231,26 @@
                 <td
                   class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400"
                 >
-                  cat
+                  {{ categories.indexOf(cat) + 1 }}
                 </td>
                 <td
                   class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
                 >
-                  tec
+                  {{ cat.categoryName }}
                 </td>
                 <td
                   class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400"
                 >
-                  test
+                  {{ cat.createdAt.substring(0, cat.createdAt.indexOf("T")) }}
                 </td>
                 <td
                   class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
                 >
-                  id
+                  {{
+                    cat.updatedAt !== null
+                      ? cat.updatedAt.substring(0, cat.updatedAt.indexOf("T"))
+                      : "Not update"
+                  }}
                 </td>
                 <td class="p-4 space-x-2 whitespace-nowrap">
                   <button
@@ -253,6 +261,7 @@
                     aria-controls="drawer-update-product-default"
                     data-drawer-placement="right"
                     class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    @click="openUpdateCategory(cat)"
                   >
                     <svg
                       class="w-4 h-4 mr-2"
@@ -279,6 +288,7 @@
                     aria-controls="drawer-delete-product-default"
                     data-drawer-placement="right"
                     class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-900"
+                    @click="openDeleteCategory(cat)"
                   >
                     <svg
                       class="w-4 h-4 mr-2"
@@ -292,7 +302,7 @@
                         clip-rule="evenodd"
                       ></path>
                     </svg>
-                    Delete item
+                    Delete
                   </button>
                 </td>
               </tr>
@@ -343,16 +353,22 @@
       </a>
       <span class="text-sm font-normal text-gray-500 dark:text-gray-400"
         >Showing
-        <span class="font-semibold text-gray-900 dark:text-white">1-20</span> of
         <span class="font-semibold text-gray-900 dark:text-white"
-          >2290</span
-        ></span
+          >{{ currentPage * categoriesPerPage - categoriesPerPage + 1 }} -
+          {{ currentPage * categoriesPerPage }}</span
+        >
+
+        of
+        <span class="font-semibold text-gray-900 dark:text-white">{{
+          categories.length
+        }}</span></span
       >
     </div>
     <div class="flex items-center space-x-3">
       <a
         href="#"
         class="inline-flex items-center justify-center flex-1 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        @click.prevent="previousPage"
       >
         <svg
           class="w-5 h-5 mr-1 -ml-1"
@@ -371,6 +387,7 @@
       <a
         href="#"
         class="inline-flex items-center justify-center flex-1 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        @click.prevent="nextPage"
       >
         Next
         <svg
@@ -393,16 +410,22 @@
   <update-category
     v-if="isShowUpdate"
     @close-update="isShowUpdate = !isShowUpdate"
+    :category="catSelected"
   />
 
   <!-- Delete category Drawer -->
   <delete-category
     v-if="isShowDelete"
     @close-delete="isShowDelete = !isShowDelete"
+    :category="catSelected"
   />
 
   <!-- Add category Drawer -->
-  <add-category v-if="isShowAdd" @close-add="isShowAdd = !isShowAdd" />
+  <add-category
+    v-if="isShowAdd"
+    @close-add="isShowAdd = !isShowAdd"
+    @add-category="addCategory"
+  />
 </template>
 
 <script>
@@ -410,7 +433,8 @@ import AddCategory from "./add_category.vue";
 import UpdateCategory from "./update_category.vue";
 import DeleteCategory from "./delete_category.vue";
 
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { useStore } from "vuex";
 
 export default {
   name: "CategoryList",
@@ -418,17 +442,74 @@ export default {
   setup() {
     const isShowAdd = ref(false);
     const isShowUpdate = ref(false);
-    const isShowDelete = ref(true);
+    const isShowDelete = ref(false);
+    const catSelected = ref(null);
 
-    const test = () => {
-      console.log("oke");
+    const categoriesPerPage = ref(5);
+    const currentPage = ref(1);
+    const store = useStore();
+    const index = ref(0);
+    store.dispatch("category/getCategories");
+
+    const categories = computed(() => store.state.category.categories);
+
+    console.log(categoriesPerPage.value);
+
+    const paginatedCategories = computed(() => {
+      const startIndex = (currentPage.value - 1) * categoriesPerPage.value;
+      const endIndex = startIndex + categoriesPerPage.value;
+      console.log(startIndex, endIndex);
+      return categories.value.slice(startIndex, endIndex);
+    });
+
+    // next page
+    const nextPage = () => {
+      // total page
+      const totalPage = Math.ceil(categories.value / categoriesPerPage.value);
+      if (currentPage.value === totalPage) return;
+      currentPage.value++;
     };
 
+    // previous page
+    const previousPage = () => {
+      if (currentPage.value === 1) return;
+      currentPage.value--;
+    };
+
+    // open update
+    const openDeleteCategory = (catItem) => {
+      catSelected.value = catItem;
+      isShowDelete.value = !isShowDelete.value;
+      catSelected.value = catItem;
+    };
+    const openUpdateCategory = (catItem) => {
+      catSelected.value = catItem;
+      isShowUpdate.value = !isShowUpdate.value;
+    };
+
+    // add category
+    const addCategory = (isSuccess) => {
+      if (isSuccess) {
+        // insert susscess
+      } else {
+        // insert fail
+      }
+    };
     return {
       isShowAdd,
       isShowUpdate,
       isShowDelete,
-      test,
+      index,
+      paginatedCategories,
+      categories,
+      currentPage,
+      categoriesPerPage,
+      catSelected,
+      nextPage,
+      previousPage,
+      openUpdateCategory,
+      openDeleteCategory,
+      addCategory,
     };
   },
 };

@@ -10,7 +10,7 @@ const getters = {};
 
 // actions
 const actions = {
-  async getAllProducts({ commit }) {
+  async getCategories({ commit }) {
     const categories = await categoriesApi.getAllCategories();
     commit("setCategories", categories);
   },
@@ -19,7 +19,7 @@ const actions = {
 // mutations
 const mutations = {
   setCategories(state, categories) {
-    state.all = categories;
+    state.categories = categories;
   },
 };
 

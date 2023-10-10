@@ -34,7 +34,7 @@
       </svg>
       <span class="sr-only">Close menu</span>
     </button>
-    <form action="#">
+    <form v-on:submit.prevent="addCategory">
       <div class="space-y-4">
         <div>
           <label
@@ -49,6 +49,7 @@
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Category name"
             required=""
+            v-model="categoryName"
           />
         </div>
 
@@ -64,13 +65,27 @@
 </template>
 
 <script>
+import { ref } from "vue";
+import categoriesApi from "@/api/categories.api";
 export default {
   name: "AddCategory",
   setup(props, context) {
     const closeAdd = () => context.emit("close-add");
 
+    const categoryName = ref(null);
+
+    const addCategory = async () => {
+      const check = await categoriesApi.insertCategory({
+        categoryName: categoryName.value,
+      });
+      console.log(context);
+      context.emit("add-category", check);
+    };
+
     return {
       closeAdd,
+      addCategory,
+      categoryName,
     };
   },
 };

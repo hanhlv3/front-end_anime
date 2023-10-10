@@ -49,7 +49,7 @@
       ></path>
     </svg>
     <h3 class="mb-6 text-lg text-gray-500 dark:text-gray-400">
-      Are you sure you want to delete this category?
+      Are you sure you want to delete {{ cat.categoryName }}?
     </h3>
     <a
       href="#"
@@ -71,10 +71,14 @@
 <script>
 export default {
   name: "DeleteCategory",
+  props: ["category"],
   setup(props, context) {
     const closeDelete = () => context.emit("close-delete");
+    // eslint-disable-next-line vue/no-setup-props-destructure
+    const cat = props.category;
     return {
       closeDelete,
+      cat,
     };
   },
 };

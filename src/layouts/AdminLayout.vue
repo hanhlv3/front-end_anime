@@ -1,7 +1,7 @@
 <template>
-  <div class="w-screen h-screen flex">
+  <div class="w-screen flex">
     <!-- Side bar -->
-    <div class="w-[400px] h-full bg-gray-200 text-white" v-show="showSide">
+    <div class="w-[400px] bg-gray-200 text-white" v-show="showSide">
       <div class="h-[50px] bg-gray-900 flex justify-start items-center">
         <div class="px-[20px]">
           <h3 class="font-bold text-xl">Admin Dashboard</h3>
@@ -53,7 +53,7 @@
             <router-link
               to="#"
               class="flex relative items-center py-[10px] px-[10px] w-full text-lg font-medium rounded-md border-gray-200 hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-linear"
-              @click="toggleCategory"
+              @click.prevent="toggleCategory"
             >
               <div class="inline-flex relative items-center">
                 <svg
@@ -120,7 +120,7 @@
             <router-link
               to="#"
               class="inline-flex relative items-center py-[10px] px-[10px] w-full text-lg font-medium rounded-md rounded-b-lg hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-linear"
-              @click="toggleFilm"
+              @click.prevent="toggleFilm"
             >
               <svg
                 class="mr-2 w-[25px] h-[25px] fill-current"
@@ -428,5 +428,4 @@ export default {
   },
 };
 </script>
-import { userRouter } from ""
 <style scoped></style>

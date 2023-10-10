@@ -10,4 +10,14 @@ const router = createRouter({
   routes,
 });
 
+// router.beforeEach((to, from, next) => {
+//   const isAuthenticated = () => {};
+//   if (to.matched.some((route) => route.meta.requiresAuth)) {
+//     // kiểm tra xem những router nào yêu cầu xác thực
+//     if (isAuthenticated) {
+//       console.log("test");
+//     } else next("/login");
+//   } else next();
+// });
+
 export default router;
