@@ -3,28 +3,19 @@ import Cookies from "js-cookie";
 
 // insert category
 const insertCategory = async (categoryName) => {
-  try {
-    const token = Cookies.get("token");
-    if (token === null) return false;
-    const response = await axios.post(
-      "http://localhost:800/api/v1/private/category",
-      categoryName,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    if (response.status === 200) {
-      // insert success
-      return true;
-    } else {
-      // insert failed
-      return false;
+  const token = Cookies.get("token");
+  console.log(categoryName);
+  const response = await axios.post(
+    "http://localhost:8000/api/v1/private/category",
+    categoryName,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     }
-  } catch (error) {
-    console.log(error);
-  }
+  );
+  console.log(token);
+  console.log(response);
 };
 
 const getAllCategories = async () => {

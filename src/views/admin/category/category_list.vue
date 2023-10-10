@@ -320,6 +320,7 @@
       <a
         href="#"
         class="inline-flex justify-center p-1 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+        @click.prevent="previousPage"
       >
         <svg
           class="w-7 h-7"
@@ -337,6 +338,7 @@
       <a
         href="#"
         class="inline-flex justify-center p-1 mr-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+        @click.prevent="nextPage"
       >
         <svg
           class="w-7 h-7"
@@ -355,7 +357,11 @@
         >Showing
         <span class="font-semibold text-gray-900 dark:text-white"
           >{{ currentPage * categoriesPerPage - categoriesPerPage + 1 }} -
-          {{ currentPage * categoriesPerPage }}</span
+          {{
+            totalPage == currentPage
+              ? categories.length
+              : currentPage * categoriesPerPage
+          }}</span
         >
 
         of
@@ -426,15 +432,71 @@
     @close-add="isShowAdd = !isShowAdd"
     @add-category="addCategory"
   />
+
+  <div
+    id="toast-message-cta"
+    class="w-full max-w-xs p-4 text-gray-500 bg-gray-200 rounded-lg shadow dark:bg-gray-800 dark:text-gray-400"
+    role="alert"
+    v-if="showToast"
+  >
+    <div class="flex">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="1em"
+        viewBox="0 0 448 512"
+      >
+        <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+        <path
+          d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z"
+        />
+      </svg>
+      <div class="ml-3 text-sm font-normal">
+        <span class="mb-1 text-sm font-semibold text-gray-900 dark:text-white"
+          >Notification</span
+        >
+        <div class="mb-2 text-sm font-normal">{{ messageToast }} tot</div>
+        <a
+          href="#"
+          @click.prevent="showToast = false"
+          class="inline-flex px-2.5 py-1.5 text-xs font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800"
+          >Close</a
+        >
+      </div>
+      <button
+        type="button"
+        class="ml-auto -mx-1.5 -my-1.5 bg-gray-200 justify-center items-center flex-shrink-0 text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+        data-dismiss-target="#toast-message-cta"
+        aria-label="Close"
+        @click.prevent="showToast = false"
+      >
+        <span class="sr-only">Close</span>
+        <svg
+          class="w-3 h-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 14 14"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
 </template>
 
 <script>
+import { ref, computed } from "vue";
+import { useStore } from "vuex";
+
 import AddCategory from "./add_category.vue";
 import UpdateCategory from "./update_category.vue";
 import DeleteCategory from "./delete_category.vue";
-
-import { ref, computed } from "vue";
-import { useStore } from "vuex";
 
 export default {
   name: "CategoryList",
@@ -443,37 +505,40 @@ export default {
     const isShowAdd = ref(false);
     const isShowUpdate = ref(false);
     const isShowDelete = ref(false);
+    const showToast = ref(false);
     const catSelected = ref(null);
+    const messageToast = ref(null);
 
-    const categoriesPerPage = ref(5);
+    const categoriesPerPage = ref(7);
     const currentPage = ref(1);
+
     const store = useStore();
     const index = ref(0);
     store.dispatch("category/getCategories");
 
     const categories = computed(() => store.state.category.categories);
-
-    console.log(categoriesPerPage.value);
+    const totalPage = computed(() =>
+      Math.ceil(categories.value.length / categoriesPerPage.value)
+    );
+    console.log(totalPage.value, "out");
 
     const paginatedCategories = computed(() => {
       const startIndex = (currentPage.value - 1) * categoriesPerPage.value;
       const endIndex = startIndex + categoriesPerPage.value;
-      console.log(startIndex, endIndex);
       return categories.value.slice(startIndex, endIndex);
     });
 
     // next page
     const nextPage = () => {
       // total page
-      const totalPage = Math.ceil(categories.value / categoriesPerPage.value);
-      if (currentPage.value === totalPage) return;
-      currentPage.value++;
+      if (currentPage.value === totalPage.value) return;
+      currentPage.value = currentPage.value + 1;
     };
 
     // previous page
     const previousPage = () => {
       if (currentPage.value === 1) return;
-      currentPage.value--;
+      currentPage.value = currentPage.value - 1;
     };
 
     // open update
@@ -487,22 +552,33 @@ export default {
       isShowUpdate.value = !isShowUpdate.value;
     };
 
+    // function set up Toast
+    function displayToast(message) {
+      showToast.value = true;
+      messageToast.value = message;
+    }
     // add category
     const addCategory = (isSuccess) => {
       if (isSuccess) {
         // insert susscess
+        displayToast("Insert category successfully");
+        store.dispatch("category/getCategories");
       } else {
         // insert fail
+        displayToast("Insert category failed");
       }
     };
     return {
       isShowAdd,
       isShowUpdate,
       isShowDelete,
+      showToast,
+      messageToast,
       index,
       paginatedCategories,
       categories,
       currentPage,
+      totalPage,
       categoriesPerPage,
       catSelected,
       nextPage,
@@ -518,5 +594,10 @@ export default {
 <style scoped>
 #drawer-update-product-default {
   display: block;
+}
+#toast-message-cta {
+  position: absolute;
+  top: 35%;
+  left: 50%;
 }
 </style>
