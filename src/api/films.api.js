@@ -1,30 +1,39 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-// insert category
-const insertCategory = async (categoryName) => {
+const createData = (film, image) => {
+  const formData = new FormData();
+  formData.append("film", JSON.stringify(film));
+  formData.append("image", image);
+  return formData;
+};
+
+// insert film
+const insertFilm = async (film, image) => {
+  // Tạo một đối tượng FormData
+  const data = createData(film, image);
   const token = Cookies.get("token");
   const response = await axios.post(
-    "http://localhost:8000/api/v1/private/category",
-    categoryName,
+    "http://localhost:8000/api/v1/private/film",
+    data,
     {
       headers: {
+        "Content-Type": "multipart/form-data",
         Authorization: `Bearer ${token}`,
       },
     }
   );
-
   if (response.status === 200) return true;
   else return false;
 };
 
-// update category
-const updateCategory = async (categoryId, categoryName) => {
+// update film
+const updateFilm = async (filmId, filmName) => {
   try {
     const token = Cookies.get("token");
     const response = await axios.put(
-      "http://localhost:8000/api/v1/private/category/" + categoryId,
-      categoryName,
+      "http://localhost:8000/api/v1/private/film/" + filmId,
+      filmName,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -38,12 +47,12 @@ const updateCategory = async (categoryId, categoryName) => {
   }
 };
 
-// delete a category
-const deleteCategory = async (categoryId) => {
+// delete a film
+const deleteFilm = async (filmId) => {
   try {
     const token = Cookies.get("token");
     const response = await axios.delete(
-      "http://localhost:8000/api/v1/private/category/" + categoryId,
+      "http://localhost:8000/api/v1/private/film/" + filmId,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -57,22 +66,21 @@ const deleteCategory = async (categoryId) => {
   }
 };
 
-const getAllCategories = async () => {
+const getAllFilms = async () => {
   try {
     const response = await axios.get(
-      "http://localhost:8000/api/v1/public/categories"
+      "http://localhost:8000/api/v1/public/film"
     );
-    const categories = response.data;
-    console.log("le van hanh", categories);
-    return categories;
+    const films = response.data;
+    return films;
   } catch (error) {
     console.log(error);
   }
 };
 
 export default {
-  getAllCategories,
-  insertCategory,
-  updateCategory,
-  deleteCategory,
+  getAllFilms,
+  insertFilm,
+  updateFilm,
+  deleteFilm,
 };

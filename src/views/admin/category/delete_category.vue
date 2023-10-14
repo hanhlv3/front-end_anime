@@ -53,6 +53,7 @@
     </h3>
     <a
       href="#"
+      @click.prevent="deleteCategory"
       class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2.5 text-center mr-2 dark:focus:ring-red-900"
     >
       Yes, I'm sure
@@ -69,6 +70,7 @@
 </template>
 
 <script>
+import categoriesApi from "@/api/categories.api";
 export default {
   name: "DeleteCategory",
   props: ["category"],
@@ -76,8 +78,14 @@ export default {
     const closeDelete = () => context.emit("close-delete");
     // eslint-disable-next-line vue/no-setup-props-destructure
     const cat = props.category;
+
+    const deleteCategory = async () => {
+      const check = await categoriesApi.deleteCategory(cat.categoryId);
+      context.emit("delete-category", check);
+    };
     return {
       closeDelete,
+      deleteCategory,
       cat,
     };
   },

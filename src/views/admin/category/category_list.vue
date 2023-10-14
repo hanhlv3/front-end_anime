@@ -416,6 +416,7 @@
   <update-category
     v-if="isShowUpdate"
     @close-update="isShowUpdate = !isShowUpdate"
+    @update-category="updateCategory"
     :category="catSelected"
   />
 
@@ -423,6 +424,7 @@
   <delete-category
     v-if="isShowDelete"
     @close-delete="isShowDelete = !isShowDelete"
+    @delete-category="deleteCategory"
     :category="catSelected"
   />
 
@@ -433,6 +435,7 @@
     @add-category="addCategory"
   />
 
+  <!-- toast message -->
   <div
     id="toast-message-cta"
     class="w-full max-w-xs p-4 text-gray-500 bg-gray-200 rounded-lg shadow dark:bg-gray-800 dark:text-gray-400"
@@ -562,11 +565,44 @@ export default {
       if (isSuccess) {
         // insert susscess
         displayToast("Insert category successfully");
+        isShowAdd.value = false;
         store.dispatch("category/getCategories");
       } else {
         // insert fail
         displayToast("Insert category failed");
       }
+      setTimeout(() => {
+        showToast.value = false;
+      }, 2000);
+    };
+
+    const updateCategory = (isSuccess) => {
+      if (isSuccess) {
+        // insert susscess
+        displayToast(" Update category successfully");
+        isShowUpdate.value = false;
+        store.dispatch("category/getCategories");
+      } else {
+        // insert fail
+        displayToast(" Update category failed");
+      }
+      setTimeout(() => {
+        showToast.value = false;
+      }, 2000);
+    };
+    const deleteCategory = (isSuccess) => {
+      if (isSuccess) {
+        // insert susscess
+        displayToast(" delete category successfully");
+        isShowDelete.value = false;
+        store.dispatch("category/getCategories");
+      } else {
+        // insert fail
+        displayToast(" delete category failed");
+      }
+      setTimeout(() => {
+        showToast.value = false;
+      }, 2000);
     };
     return {
       isShowAdd,
@@ -586,6 +622,8 @@ export default {
       openUpdateCategory,
       openDeleteCategory,
       addCategory,
+      updateCategory,
+      deleteCategory,
     };
   },
 };

@@ -43,28 +43,7 @@
                 <a
                   href="#"
                   class="ml-1 text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-300 dark:hover:text-white"
-                  >E-commerce</a
-                >
-              </div>
-            </li>
-            <li>
-              <div class="flex items-center">
-                <svg
-                  class="w-6 h-6 text-gray-400"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-                <span
-                  class="ml-1 text-gray-400 md:ml-2 dark:text-gray-500"
-                  aria-current="page"
-                  >Products</span
+                  >Category</a
                 >
               </div>
             </li>
@@ -73,7 +52,7 @@
         <h1
           class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white"
         >
-          All products
+          All Films
         </h1>
       </div>
       <div
@@ -88,7 +67,7 @@
                 name="email"
                 id="products-search"
                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Search for products"
+                placeholder="Search for category"
               />
             </div>
           </form>
@@ -171,8 +150,9 @@
           data-drawer-show="drawer-create-product-default"
           aria-controls="drawer-create-product-default"
           data-drawer-placement="right"
+          @click="isShowAdd = !isShowAdd"
         >
-          Add new product
+          Add new film
         </button>
       </div>
     </div>
@@ -186,56 +166,63 @@
           >
             <thead class="bg-gray-100 dark:bg-gray-700">
               <tr>
-                <th scope="col" class="p-4">
-                  <div class="flex items-center">
-                    <input
-                      id="checkbox-all"
-                      aria-describedby="checkbox-1"
-                      type="checkbox"
-                      class="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
-                    />
-                    <label for="checkbox-all" class="sr-only">checkbox</label>
-                  </div>
-                </th>
                 <th
                   scope="col"
-                  class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400"
+                  class="p-4 text-xs font-medium text-gray-500 uppercase dark:text-gray-400"
                 >
-                  Product Name
+                  INDEX
                 </th>
                 <th
                   scope="col"
-                  class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400"
+                  class="p-4 text-xs font-medium text-gray-500 uppercase dark:text-gray-400"
                 >
-                  Technology
+                  NAME
                 </th>
                 <th
                   scope="col"
-                  class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400"
+                  class="p-4 text-xs font-medium text-gray-500 uppercase dark:text-gray-400"
                 >
-                  Description
+                  IMAGE
                 </th>
                 <th
                   scope="col"
-                  class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400"
+                  class="p-4 text-xs font-medium text-gray-500 uppercase dark:text-gray-400"
                 >
-                  ID
+                  EPISODES-QUANTITY
                 </th>
                 <th
                   scope="col"
-                  class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400"
+                  class="p-4 text-xs font-medium text-gray-500 uppercase dark:text-gray-400"
                 >
-                  Price
+                  RELEASE-DATE
                 </th>
                 <th
                   scope="col"
-                  class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400"
+                  class="p-4 text-xs font-medium text-gray-500 uppercase dark:text-gray-400"
                 >
-                  Discount
+                  CATEGORY
                 </th>
                 <th
                   scope="col"
-                  class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400"
+                  class="p-4 text-xs font-medium text-gray-500 uppercase dark:text-gray-400"
+                >
+                  CREATED-AT
+                </th>
+                <th
+                  scope="col"
+                  class="p-4 text-xs font-medium text-gray-500 uppercase dark:text-gray-400"
+                >
+                  UPDATED-AT
+                </th>
+                <th
+                  scope="col"
+                  class="p-4 text-xs font-medium text-gray-500 uppercase dark:text-gray-400"
+                >
+                  DETAIL EPISODE
+                </th>
+                <th
+                  scope="col"
+                  class="p-4 text-xs font-medium text-gray-500 uppercase dark:text-gray-400"
                 >
                   Actions
                 </th>
@@ -244,58 +231,65 @@
             <tbody
               class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700"
             >
-              <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
-                <td class="w-4 p-4">
-                  <div class="flex items-center">
-                    <input
-                      id="checkbox"
-                      aria-describedby="checkbox-1"
-                      type="checkbox"
-                      class="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
-                    />
-                    <label for="check" class="sr-only">checkbox</label>
-                  </div>
-                </td>
+              <tr
+                v-for="film in paginatedFilm"
+                :key="film.filmId"
+                class="hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
                 <td
                   class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400"
                 >
-                  <div
-                    class="text-base font-semibold text-gray-900 dark:text-white"
-                  >
-                    name
-                  </div>
-                  <div
-                    class="text-sm font-normal text-gray-500 dark:text-gray-400"
-                  >
-                    cat
-                  </div>
+                  {{ films.indexOf(film) + 1 }}
                 </td>
                 <td
                   class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
                 >
-                  tec
+                  {{ film.filmName }}
+                </td>
+                <td
+                  class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  <img :src="film.img" class="w-24 h-28" alt="image of film" />
+                </td>
+                <td
+                  class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  {{ film.episodesQuantity }}
+                </td>
+                <td
+                  class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  {{
+                    film.releaseDate.substring(0, film.createdAt.indexOf("T"))
+                  }}
+                </td>
+                <td
+                  class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  <span v-for="cat in film.categories" :key="cat.categoryId">
+                    {{ cat.categoryName }}
+                    <br />
+                  </span>
                 </td>
                 <td
                   class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400"
                 >
-                  test
+                  {{ film.createdAt.substring(0, film.createdAt.indexOf("T")) }}
                 </td>
                 <td
                   class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
                 >
-                  id
+                  {{
+                    film.updatedAt !== null
+                      ? film.updatedAt.substring(0, film.updatedAt.indexOf("T"))
+                      : "Not update"
+                  }}
                 </td>
                 <td
                   class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
                 >
-                  price
+                  detail episode
                 </td>
-                <td
-                  class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  dí
-                </td>
-
                 <td class="p-4 space-x-2 whitespace-nowrap">
                   <button
                     type="button"
@@ -305,6 +299,7 @@
                     aria-controls="drawer-update-product-default"
                     data-drawer-placement="right"
                     class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    @click="openUpdateFilm(film)"
                   >
                     <svg
                       class="w-4 h-4 mr-2"
@@ -331,6 +326,7 @@
                     aria-controls="drawer-delete-product-default"
                     data-drawer-placement="right"
                     class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-900"
+                    @click="openDeleteFilm(film)"
                   >
                     <svg
                       class="w-4 h-4 mr-2"
@@ -344,7 +340,7 @@
                         clip-rule="evenodd"
                       ></path>
                     </svg>
-                    Delete item
+                    Delete
                   </button>
                 </td>
               </tr>
@@ -362,6 +358,7 @@
       <a
         href="#"
         class="inline-flex justify-center p-1 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+        @click.prevent="previousPage"
       >
         <svg
           class="w-7 h-7"
@@ -379,6 +376,7 @@
       <a
         href="#"
         class="inline-flex justify-center p-1 mr-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+        @click.prevent="nextPage"
       >
         <svg
           class="w-7 h-7"
@@ -395,16 +393,24 @@
       </a>
       <span class="text-sm font-normal text-gray-500 dark:text-gray-400"
         >Showing
-        <span class="font-semibold text-gray-900 dark:text-white">1-20</span> of
         <span class="font-semibold text-gray-900 dark:text-white"
-          >2290</span
-        ></span
+          >{{ currentPage * filmPerPage - filmPerPage + 1 }} -
+          {{
+            totalPage == currentPage ? films.length : currentPage * filmPerPage
+          }}</span
+        >
+
+        of
+        <span class="font-semibold text-gray-900 dark:text-white">{{
+          films.length
+        }}</span></span
       >
     </div>
     <div class="flex items-center space-x-3">
       <a
         href="#"
         class="inline-flex items-center justify-center flex-1 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        @click.prevent="previousPage"
       >
         <svg
           class="w-5 h-5 mr-1 -ml-1"
@@ -423,6 +429,7 @@
       <a
         href="#"
         class="inline-flex items-center justify-center flex-1 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        @click.prevent="nextPage"
       >
         Next
         <svg
@@ -442,23 +449,222 @@
   </div>
 
   <!-- Edit film Drawer -->
-  <update-film />
 
   <!-- Delete film Drawer -->
-  <delete-film />
+  <delete-film
+    v-if="isShowDelete"
+    @close-delete="isShowDelete = !isShowDelete"
+    @delete-film="deleteCategory"
+    :film="filmSelected"
+  />
 
-  <!-- Add film Drawer -->
-  <add-film />
+  <!-- Add category Drawer -->
+  <add-film
+    v-if="isShowAdd"
+    @close-add="isShowAdd = !isShowAdd"
+    @add-film="addFilm"
+  />
+
+  <!-- toast message -->
+  <div
+    id="toast-message-cta"
+    class="w-full max-w-xs p-4 text-gray-500 bg-gray-200 rounded-lg shadow dark:bg-gray-800 dark:text-gray-400"
+    role="alert"
+    v-if="showToast"
+  >
+    <div class="flex">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="1em"
+        viewBox="0 0 448 512"
+      >
+        <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+        <path
+          d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z"
+        />
+      </svg>
+      <div class="ml-3 text-sm font-normal">
+        <span class="mb-1 text-sm font-semibold text-gray-900 dark:text-white"
+          >Notification</span
+        >
+        <div class="mb-2 text-sm font-normal">{{ messageToast }} tot</div>
+        <a
+          href="#"
+          @click.prevent="showToast = false"
+          class="inline-flex px-2.5 py-1.5 text-xs font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800"
+          >Close</a
+        >
+      </div>
+      <button
+        type="button"
+        class="ml-auto -mx-1.5 -my-1.5 bg-gray-200 justify-center items-center flex-shrink-0 text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+        data-dismiss-target="#toast-message-cta"
+        aria-label="Close"
+        @click.prevent="showToast = false"
+      >
+        <span class="sr-only">Close</span>
+        <svg
+          class="w-3 h-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 14 14"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
 </template>
 
 <script>
+import { ref, computed } from "vue";
+import { useStore } from "vuex";
+
 import AddFilm from "./add_film.vue";
-import UpdateFilm from "./update_film.vue";
 import DeleteFilm from "./delete_film.vue";
 export default {
   name: "FilmList",
-  components: { AddFilm, UpdateFilm, DeleteFilm },
+  components: { AddFilm, DeleteFilm },
+  setup() {
+    const isShowAdd = ref(false);
+    const isShowUpdate = ref(false);
+    const isShowDelete = ref(false);
+    const showToast = ref(false);
+    const filmSelected = ref(null);
+    const messageToast = ref(null);
+
+    const filmPerPage = ref(5);
+    const currentPage = ref(1);
+
+    const store = useStore();
+    const index = ref(0);
+    store.dispatch("film/getFilms");
+
+    const films = computed(() => store.state.film.films);
+    console.log(films);
+    const totalPage = computed(() =>
+      Math.ceil(films.value.length / filmPerPage.value)
+    );
+
+    const paginatedFilm = computed(() => {
+      const startIndex = (currentPage.value - 1) * filmPerPage.value;
+      const endIndex = startIndex + filmPerPage.value;
+      return films.value.slice(startIndex, endIndex);
+    });
+
+    // next page
+    const nextPage = () => {
+      // total page
+      if (currentPage.value === totalPage.value) return;
+      currentPage.value = currentPage.value + 1;
+    };
+
+    // previous page
+    const previousPage = () => {
+      if (currentPage.value === 1) return;
+      currentPage.value = currentPage.value - 1;
+    };
+
+    // open update
+    const openDeleteFilm = (filmItem) => {
+      filmSelected.value = filmItem;
+      console.log("film selected", filmSelected.value);
+      isShowDelete.value = true;
+      filmSelected.value = filmItem;
+    };
+    const openUpdateFilm = (filmItem) => {
+      filmSelected.value = filmItem;
+      isShowUpdate.value = !isShowUpdate.value;
+    };
+
+    // function set up Toast
+    function displayToast(message) {
+      showToast.value = true;
+      messageToast.value = message;
+    }
+    // add category
+    const addFilm = (isSuccess) => {
+      if (isSuccess) {
+        // insert susscess
+        displayToast("Insert film successfully");
+        isShowAdd.value = false;
+        store.dispatch("film/getFilms");
+      } else {
+        // insert fail
+        displayToast("Insert film failed");
+      }
+      setTimeout(() => {
+        showToast.value = false;
+      }, 2000);
+    };
+
+    const updateFilm = (isSuccess) => {
+      if (isSuccess) {
+        // insert susscess
+        displayToast(" Update category successfully");
+        isShowUpdate.value = false;
+        store.dispatch("film/getFilms");
+      } else {
+        // insert fail
+        displayToast(" Update category failed");
+      }
+      setTimeout(() => {
+        showToast.value = false;
+      }, 2000);
+    };
+    const deleteFilm = (isSuccess) => {
+      if (isSuccess) {
+        // insert susscess
+        displayToast(" delete category successfully");
+        isShowDelete.value = false;
+        store.dispatch("category/getfilm");
+      } else {
+        // insert fail
+        displayToast(" delete category failed");
+      }
+      setTimeout(() => {
+        showToast.value = false;
+      }, 2000);
+    };
+    return {
+      isShowAdd,
+      isShowUpdate,
+      isShowDelete,
+      showToast,
+      messageToast,
+      index,
+      paginatedFilm,
+      films,
+      currentPage,
+      totalPage,
+      filmPerPage,
+      filmSelected,
+      nextPage,
+      previousPage,
+      openUpdateFilm,
+      openDeleteFilm,
+      addFilm,
+      updateFilm,
+      deleteFilm,
+    };
+  },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+#drawer-update-product-default {
+  display: block;
+}
+#toast-message-cta {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+}
+</style>

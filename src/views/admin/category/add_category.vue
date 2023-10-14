@@ -75,12 +75,11 @@ export default {
     const categoryName = ref(null);
 
     const addCategory = async () => {
-      console.log(categoryName.value);
       const check = await categoriesApi.insertCategory({
         categoryName: categoryName.value,
       });
-      console.log(check);
-      //context.emit("add-category", check);
+
+      context.emit("add-category", check);
     };
 
     return {
