@@ -69,7 +69,7 @@
 </template>
 
 <script>
-//import filmApi from "@/api/film.api";
+import filmApi from "@/api/films.api";
 export default {
   name: "DeleteFilm",
   props: ["film"],
@@ -81,8 +81,8 @@ export default {
 
     const deleteFilm = async () => {
       console.log(film.filmId);
-      //const check = await filmApi.deleteFilm(film.filmId);
-      //context.emit("delete-film", check);
+      const check = await filmApi.deleteFilm(film.filmId);
+      context.emit("delete-film", check);
     };
     return {
       closeDelete,

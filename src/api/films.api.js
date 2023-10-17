@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 const createData = (film, image) => {
   const formData = new FormData();
   formData.append("film", JSON.stringify(film));
-  formData.append("image", image);
+  if (image != null) formData.append("image", image);
   return formData;
 };
 
@@ -28,12 +28,16 @@ const insertFilm = async (film, image) => {
 };
 
 // update film
-const updateFilm = async (filmId, filmName) => {
+const updateFilm = async (filmId, film, image) => {
   try {
     const token = Cookies.get("token");
+    // Tạo một đối tượng FormData
+    const data =
+      image == null ? createData(film, null) : createData(film, image);
+    console.log(data);
     const response = await axios.put(
       "http://localhost:8000/api/v1/private/film/" + filmId,
-      filmName,
+      data,
       {
         headers: {
           Authorization: `Bearer ${token}`,

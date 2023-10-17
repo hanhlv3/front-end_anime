@@ -152,7 +152,7 @@
           data-drawer-placement="right"
           @click="isShowAdd = !isShowAdd"
         >
-          Add new film
+          ADD NEW FILM
         </button>
       </div>
     </div>
@@ -449,12 +449,18 @@
   </div>
 
   <!-- Edit film Drawer -->
+  <update-film
+    v-if="isShowUpdate"
+    @close-update="isShowUpdate = !isShowUpdate"
+    @update-film="updateFilm"
+    :film="filmSelected"
+  />
 
   <!-- Delete film Drawer -->
   <delete-film
     v-if="isShowDelete"
     @close-delete="isShowDelete = !isShowDelete"
-    @delete-film="deleteCategory"
+    @delete-film="deleteFilm"
     :film="filmSelected"
   />
 
@@ -487,7 +493,7 @@
         <span class="mb-1 text-sm font-semibold text-gray-900 dark:text-white"
           >Notification</span
         >
-        <div class="mb-2 text-sm font-normal">{{ messageToast }} tot</div>
+        <div class="mb-2 text-sm font-normal">{{ messageToast }}</div>
         <a
           href="#"
           @click.prevent="showToast = false"
@@ -529,9 +535,10 @@ import { useStore } from "vuex";
 
 import AddFilm from "./add_film.vue";
 import DeleteFilm from "./delete_film.vue";
+import UpdateFilm from "./update_film.vue";
 export default {
   name: "FilmList",
-  components: { AddFilm, DeleteFilm },
+  components: { AddFilm, DeleteFilm, UpdateFilm },
   setup() {
     const isShowAdd = ref(false);
     const isShowUpdate = ref(false);
@@ -540,7 +547,7 @@ export default {
     const filmSelected = ref(null);
     const messageToast = ref(null);
 
-    const filmPerPage = ref(5);
+    const filmPerPage = ref(3);
     const currentPage = ref(1);
 
     const store = useStore();
@@ -558,6 +565,7 @@ export default {
       const endIndex = startIndex + filmPerPage.value;
       return films.value.slice(startIndex, endIndex);
     });
+    console.log("paginated film", paginatedFilm.value);
 
     // next page
     const nextPage = () => {
@@ -575,7 +583,6 @@ export default {
     // open update
     const openDeleteFilm = (filmItem) => {
       filmSelected.value = filmItem;
-      console.log("film selected", filmSelected.value);
       isShowDelete.value = true;
       filmSelected.value = filmItem;
     };
@@ -608,12 +615,12 @@ export default {
     const updateFilm = (isSuccess) => {
       if (isSuccess) {
         // insert susscess
-        displayToast(" Update category successfully");
+        displayToast(" Update film successfully");
         isShowUpdate.value = false;
         store.dispatch("film/getFilms");
       } else {
         // insert fail
-        displayToast(" Update category failed");
+        displayToast(" Update film failed");
       }
       setTimeout(() => {
         showToast.value = false;
@@ -622,12 +629,12 @@ export default {
     const deleteFilm = (isSuccess) => {
       if (isSuccess) {
         // insert susscess
-        displayToast(" delete category successfully");
+        displayToast(" delete film successfully");
         isShowDelete.value = false;
-        store.dispatch("category/getfilm");
+        store.dispatch("film/getFilms");
       } else {
         // insert fail
-        displayToast(" delete category failed");
+        displayToast(" delete film failed");
       }
       setTimeout(() => {
         showToast.value = false;
