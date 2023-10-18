@@ -21,13 +21,13 @@ export const admin_router = {
       meta: { layout: "admin", sideBar: "film-list" },
     },
     {
-      name: "AddFilm",
-      path: "/admin/film/add",
+      name: "Episode",
+      path: "/admin/episode/:id/:filmName",
       component: () =>
         import(
-          /* webpackChunkName: "Home" */ "@/views/admin/film/add_film.vue"
+          /* webpackChunkName: "Home" */ "@/views/admin/episode/episode.vue"
         ),
-      meta: { layout: "admin", sideBar: "add-film" },
+      meta: { layout: "admin", sideBar: "episode" },
     },
     {
       name: "CategoryList",

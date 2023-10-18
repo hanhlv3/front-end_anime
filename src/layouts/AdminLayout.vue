@@ -157,11 +157,11 @@
                 Film list
               </router-link>
               <router-link
-                :to="{ name: 'AddFilm' }"
                 class="block flex relative items-center py-[5px] px-[5px] rounded-md border-gray-200 hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-linear"
                 :class="{
-                  'bg-gray-200 text-gray-800': sideBar === 'add-film',
+                  'bg-gray-200 text-gray-800': sideBar === 'episode',
                 }"
+                to="#"
               >
                 <svg
                   class="mr-2 w-[15px] h-[15px] fill-current"
@@ -174,7 +174,7 @@
                     d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
                   />
                 </svg>
-                Add film
+                Episode
               </router-link>
             </div>
             <router-link
@@ -370,6 +370,7 @@
 <script>
 import { ref, watchEffect } from "vue";
 import { useRouter } from "vue-router";
+
 export default {
   name: "AdminLayout",
   setup() {
@@ -396,7 +397,7 @@ export default {
     sideBar.value = route.meta.sideBar;
 
     const updateShow = () => {
-      if (sideBar.value === "add-film" || sideBar.value === "film-list")
+      if (sideBar.value === "episode" || sideBar.value === "film-list")
         showFilm.value = true;
       else showFilm.value = false;
 
@@ -410,7 +411,6 @@ export default {
     // watch
     watchEffect(() => {
       const newSideBar = router.currentRoute.value.meta.sideBar;
-      console.log(newSideBar);
       sideBar.value = newSideBar;
       updateShow();
     });

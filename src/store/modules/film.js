@@ -13,6 +13,7 @@ const getters = {};
 const actions = {
   async getFilms({ commit }) {
     const films = await filmsApi.getAllFilms();
+    console.log("getFIlm", films);
     commit("setFilms", films);
   },
   insertFilmsList({ commit }, film) {

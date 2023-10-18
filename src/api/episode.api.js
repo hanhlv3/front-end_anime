@@ -1,12 +1,13 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-// insert category
-const insertCategory = async (categoryName) => {
+// insert episode
+const insertEpisode = async (episode) => {
   const token = Cookies.get("token");
+  console.log("episodeInsert", episode);
   const response = await axios.post(
-    "http://localhost:8000/api/v1/private/category",
-    categoryName,
+    "http://localhost:8000/api/v1/private/episode",
+    episode,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -18,13 +19,13 @@ const insertCategory = async (categoryName) => {
   else return false;
 };
 
-// update category
-const updateCategory = async (categoryId, categoryName) => {
+// update episode
+const updateEpisode = async (episodeId, episode) => {
   try {
     const token = Cookies.get("token");
     const response = await axios.put(
-      "http://localhost:8000/api/v1/private/category/" + categoryId,
-      categoryName,
+      "http://localhost:8000/api/v1/private/episode/" + episodeId,
+      episode,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -38,12 +39,12 @@ const updateCategory = async (categoryId, categoryName) => {
   }
 };
 
-// delete a category
-const deleteCategory = async (categoryId) => {
+// delete a episode
+const deleteEpisode = async (episodeId) => {
   try {
     const token = Cookies.get("token");
     const response = await axios.delete(
-      "http://localhost:8000/api/v1/private/category/" + categoryId,
+      "http://localhost:8000/api/v1/private/episode/" + episodeId,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -57,10 +58,10 @@ const deleteCategory = async (categoryId) => {
   }
 };
 
-const getAllCategories = async () => {
+const getAllEpisodes = async (filmId) => {
   try {
     const response = await axios.get(
-      "http://localhost:8000/api/v1/public/categories"
+      "http://localhost:8000/api/v1/public/episode/film/" + filmId
     );
     return response.data;
   } catch (error) {
@@ -69,8 +70,8 @@ const getAllCategories = async () => {
 };
 
 export default {
-  getAllCategories,
-  insertCategory,
-  updateCategory,
-  deleteCategory,
+  getAllEpisodes,
+  insertEpisode,
+  updateEpisode,
+  deleteEpisode,
 };

@@ -1,3 +1,4 @@
+<!-- eslint-disable no-unused-vars -->
 <template>
   <div
     class="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5 dark:bg-gray-800 dark:border-gray-700"
@@ -43,7 +44,7 @@
                 <a
                   href="#"
                   class="ml-1 text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-300 dark:hover:text-white"
-                  >Category</a
+                  >Episode</a
                 >
               </div>
             </li>
@@ -52,7 +53,7 @@
         <h1
           class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white"
         >
-          All Films
+          {{ filmName }}
         </h1>
       </div>
       <div
@@ -67,7 +68,7 @@
                 name="email"
                 id="products-search"
                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Search for category"
+                placeholder="Search for episode"
               />
             </div>
           </form>
@@ -152,7 +153,7 @@
           data-drawer-placement="right"
           @click="isShowAdd = !isShowAdd"
         >
-          ADD NEW FILM
+          Add new episode
         </button>
       </div>
     </div>
@@ -166,6 +167,17 @@
           >
             <thead class="bg-gray-100 dark:bg-gray-700">
               <tr>
+                <th scope="col" class="p-4">
+                  <div class="flex items-center">
+                    <input
+                      id="checkbox-all"
+                      aria-describedby="checkbox-1"
+                      type="checkbox"
+                      class="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
+                    />
+                    <label for="checkbox-all" class="sr-only">checkbox</label>
+                  </div>
+                </th>
                 <th
                   scope="col"
                   class="p-4 text-xs font-medium text-gray-500 uppercase dark:text-gray-400"
@@ -176,31 +188,13 @@
                   scope="col"
                   class="p-4 text-xs font-medium text-gray-500 uppercase dark:text-gray-400"
                 >
-                  NAME
+                  Link
                 </th>
                 <th
                   scope="col"
                   class="p-4 text-xs font-medium text-gray-500 uppercase dark:text-gray-400"
                 >
-                  IMAGE
-                </th>
-                <th
-                  scope="col"
-                  class="p-4 text-xs font-medium text-gray-500 uppercase dark:text-gray-400"
-                >
-                  EPISODES-QUANTITY
-                </th>
-                <th
-                  scope="col"
-                  class="p-4 text-xs font-medium text-gray-500 uppercase dark:text-gray-400"
-                >
-                  RELEASE-DATE
-                </th>
-                <th
-                  scope="col"
-                  class="p-4 text-xs font-medium text-gray-500 uppercase dark:text-gray-400"
-                >
-                  CATEGORY
+                  Episode number
                 </th>
                 <th
                   scope="col"
@@ -218,12 +212,6 @@
                   scope="col"
                   class="p-4 text-xs font-medium text-gray-500 uppercase dark:text-gray-400"
                 >
-                  DETAIL EPISODE
-                </th>
-                <th
-                  scope="col"
-                  class="p-4 text-xs font-medium text-gray-500 uppercase dark:text-gray-400"
-                >
                   Actions
                 </th>
               </tr>
@@ -232,74 +220,57 @@
               class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700"
             >
               <tr
-                v-for="film in paginatedFilm"
-                :key="film.filmId"
+                v-for="episode in paginatedEpisodes"
+                :key="episode.episodeId"
                 class="hover:bg-gray-100 dark:hover:bg-gray-700"
               >
+                <td class="w-4 p-4">
+                  <div class="flex items-center">
+                    <input
+                      id="checkbox"
+                      aria-describedby="checkbox-1"
+                      type="checkbox"
+                      class="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
+                    />
+                    <label for="check" class="sr-only">checkbox</label>
+                  </div>
+                </td>
                 <td
                   class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400"
                 >
-                  {{ films.indexOf(film) + 1 }}
+                  {{ episodes.indexOf(episode) + 1 }}
                 </td>
                 <td
                   class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
                 >
-                  {{ film.filmName }}
+                  {{ episode.episodeLink }}
                 </td>
                 <td
                   class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
                 >
-                  <img :src="film.img" class="w-24 h-28" alt="image of film" />
+                  {{ episode.episodeNumber }}
                 </td>
                 <td
-                  class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  {{ film.episodesQuantity }}
-                </td>
-                <td
-                  class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 xl:max-w-xs dark:text-gray-400"
                 >
                   {{
-                    film.releaseDate.substring(0, film.createdAt.indexOf("T"))
+                    episode.createdAt.substring(
+                      0,
+                      episode.createdAt.indexOf("T")
+                    )
                   }}
                 </td>
                 <td
                   class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
                 >
-                  <span v-for="cat in film.categories" :key="cat.categoryId">
-                    {{ cat.categoryName }}
-                    <br />
-                  </span>
-                </td>
-                <td
-                  class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400"
-                >
-                  {{ film.createdAt.substring(0, film.createdAt.indexOf("T")) }}
-                </td>
-                <td
-                  class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
                   {{
-                    film.updatedAt !== null
-                      ? film.updatedAt.substring(0, film.updatedAt.indexOf("T"))
+                    episode.updatedAt !== null
+                      ? episode.updatedAt.substring(
+                          0,
+                          episode.updatedAt.indexOf("T")
+                        )
                       : "Not update"
                   }}
-                </td>
-                <td
-                  class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  <button
-                    type="button"
-                    id="updateProductButton"
-                    data-drawer-target="drawer-update-product-default"
-                    data-drawer-show="drawer-update-product-default"
-                    aria-controls="drawer-update-product-default"
-                    data-drawer-placement="right"
-                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    @click="linkToEpisode(film)"
-                  >
-                    Episode
-                  </button>
                 </td>
                 <td class="p-4 space-x-2 whitespace-nowrap">
                   <button
@@ -310,7 +281,7 @@
                     aria-controls="drawer-update-product-default"
                     data-drawer-placement="right"
                     class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    @click="openUpdateFilm(film)"
+                    @click="openUpdateEpisode(episode)"
                   >
                     <svg
                       class="w-4 h-4 mr-2"
@@ -337,7 +308,7 @@
                     aria-controls="drawer-delete-product-default"
                     data-drawer-placement="right"
                     class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-900"
-                    @click="openDeleteFilm(film)"
+                    @click="openDeleteEpisode(episode)"
                   >
                     <svg
                       class="w-4 h-4 mr-2"
@@ -405,15 +376,17 @@
       <span class="text-sm font-normal text-gray-500 dark:text-gray-400"
         >Showing
         <span class="font-semibold text-gray-900 dark:text-white"
-          >{{ currentPage * filmPerPage - filmPerPage + 1 }} -
+          >{{ currentPage * episodesPerPage - episodesPerPage + 1 }} -
           {{
-            totalPage == currentPage ? films.length : currentPage * filmPerPage
+            totalPage == currentPage
+              ? episodes.length
+              : currentPage * episodesPerPage
           }}</span
         >
 
         of
         <span class="font-semibold text-gray-900 dark:text-white">{{
-          films.length
+          episodes.length
         }}</span></span
       >
     </div>
@@ -459,27 +432,31 @@
     </div>
   </div>
 
-  <!-- Edit film Drawer -->
-  <update-film
+  <!-- Edit episode Drawer -->
+  <update-episode
     v-if="isShowUpdate"
     @close-update="isShowUpdate = !isShowUpdate"
-    @update-film="updateFilm"
-    :film="filmSelected"
+    @update-episode="updateEpisode"
+    :episode="episodeSelected"
+    :filmId="filmId"
   />
+
+  <!-- Delete episode Drawer -->
 
   <!-- Delete film Drawer -->
-  <delete-film
+  <delete-episode
     v-if="isShowDelete"
     @close-delete="isShowDelete = !isShowDelete"
-    @delete-film="deleteFilm"
-    :film="filmSelected"
+    @delete-episode="deleteEpisode"
+    :episode="episodeSelected"
   />
 
-  <!-- Add category Drawer -->
-  <add-film
+  <!-- Add episode Drawer -->
+  <add-episode
     v-if="isShowAdd"
     @close-add="isShowAdd = !isShowAdd"
-    @add-film="addFilm"
+    @add-episode="addEpisode"
+    :filmId="filmId"
   />
 
   <!-- toast message -->
@@ -502,9 +479,9 @@
       </svg>
       <div class="ml-3 text-sm font-normal">
         <span class="mb-1 text-sm font-semibold text-gray-900 dark:text-white"
-          >Notification</span
+          >Notifiepisodeion</span
         >
-        <div class="mb-2 text-sm font-normal">{{ messageToast }}</div>
+        <div class="mb-2 text-sm font-normal">{{ messageToast }} tot</div>
         <a
           href="#"
           @click.prevent="showToast = false"
@@ -543,39 +520,41 @@
 <script>
 import { ref, computed } from "vue";
 import { useStore } from "vuex";
-import { useRouter } from "vue-router";
+import { useRoute } from "vue-router";
 
-import AddFilm from "./add_film.vue";
-import DeleteFilm from "./delete_film.vue";
-import UpdateFilm from "./update_film.vue";
+import AddEpisode from "./add_episode.vue";
+import DeleteEpisode from "./delete_episode.vue";
+import UpdateEpisode from "./update_episode.vue";
+
 export default {
-  name: "FilmList",
-  components: { AddFilm, DeleteFilm, UpdateFilm },
+  name: "Episode",
+  components: { DeleteEpisode, AddEpisode, UpdateEpisode },
   setup() {
-    const router = useRouter();
+    const router = useRoute();
+    const store = useStore();
+    const filmId = computed(() => router.params.id);
+    const filmName = computed(() => router.params.filmName);
+
     const isShowAdd = ref(false);
     const isShowUpdate = ref(false);
     const isShowDelete = ref(false);
     const showToast = ref(false);
-    const filmSelected = ref(null);
+    const episodeSelected = ref(null);
     const messageToast = ref(null);
 
-    const filmPerPage = ref(3);
+    const episodesPerPage = ref(7);
     const currentPage = ref(1);
-
-    const store = useStore();
-    store.dispatch("film/getFilms");
     const index = ref(0);
+    store.dispatch("episode/getEpisodes", filmId.value);
 
-    const films = computed(() => store.state.film.films);
+    const episodes = computed(() => store.state.episode.episodes);
     const totalPage = computed(() =>
-      Math.ceil(films.value.length / filmPerPage.value)
+      Math.ceil(episodes.value.length / episodesPerPage.value)
     );
-
-    const paginatedFilm = computed(() => {
-      const startIndex = (currentPage.value - 1) * filmPerPage.value;
-      const endIndex = startIndex + filmPerPage.value;
-      return films.value.slice(startIndex, endIndex);
+    const paginatedEpisodes = computed(() => {
+      const startIndex = (currentPage.value - 1) * episodesPerPage.value;
+      const endIndex = startIndex + episodesPerPage.value;
+      return episodes.value.slice(startIndex, endIndex);
     });
 
     // next page
@@ -592,13 +571,13 @@ export default {
     };
 
     // open update
-    const openDeleteFilm = (filmItem) => {
-      filmSelected.value = filmItem;
-      isShowDelete.value = true;
-      filmSelected.value = filmItem;
+    const openDeleteEpisode = (episodeItem) => {
+      console.log(episodeItem);
+      episodeSelected.value = episodeItem;
+      isShowDelete.value = !isShowDelete.value;
     };
-    const openUpdateFilm = (filmItem) => {
-      filmSelected.value = filmItem;
+    const openUpdateEpisode = (episodeItem) => {
+      episodeSelected.value = episodeItem;
       isShowUpdate.value = !isShowUpdate.value;
     };
 
@@ -607,56 +586,49 @@ export default {
       showToast.value = true;
       messageToast.value = message;
     }
-    // add category
-    const addFilm = (isSuccess) => {
+    // add episode
+    const addEpisode = (isSuccess) => {
       if (isSuccess) {
         // insert susscess
-        displayToast("Insert film successfully");
+        displayToast("Insert episode successfully");
         isShowAdd.value = false;
-        store.dispatch("film/getFilms");
+        store.dispatch("episode/getEpisodes", filmId.value);
       } else {
         // insert fail
-        displayToast("Insert film failed");
+        displayToast("Insert episode failed");
       }
       setTimeout(() => {
         showToast.value = false;
       }, 2000);
     };
 
-    const updateFilm = (isSuccess) => {
+    const updateEpisode = (isSuccess) => {
       if (isSuccess) {
         // insert susscess
-        displayToast(" Update film successfully");
+        displayToast(" Update episode successfully");
         isShowUpdate.value = false;
-        store.dispatch("film/getFilms");
+        store.dispatch("episode/getEpisodes", filmId.value);
       } else {
         // insert fail
-        displayToast(" Update film failed");
+        displayToast(" Update episode failed");
       }
       setTimeout(() => {
         showToast.value = false;
       }, 2000);
     };
-    const deleteFilm = (isSuccess) => {
+    const deleteEpisode = (isSuccess) => {
       if (isSuccess) {
         // insert susscess
-        displayToast(" delete film successfully");
+        displayToast(" delete episode successfully");
         isShowDelete.value = false;
-        store.dispatch("film/getFilms");
+        store.dispatch("episode/getEpisodes", filmId.value);
       } else {
         // insert fail
-        displayToast(" delete film failed");
+        displayToast(" delete episode failed");
       }
       setTimeout(() => {
         showToast.value = false;
       }, 2000);
-    };
-
-    const linkToEpisode = (film) => {
-      router.push({
-        name: "Episode",
-        params: { id: film.filmId, filmName: film.filmName },
-      });
     };
     return {
       isShowAdd,
@@ -665,20 +637,21 @@ export default {
       showToast,
       messageToast,
       index,
-      paginatedFilm,
-      films,
+      paginatedEpisodes,
+      episodes,
       currentPage,
       totalPage,
-      filmPerPage,
-      filmSelected,
+      episodesPerPage,
+      episodeSelected,
       nextPage,
       previousPage,
-      openUpdateFilm,
-      openDeleteFilm,
-      addFilm,
-      updateFilm,
-      deleteFilm,
-      linkToEpisode,
+      openUpdateEpisode,
+      openDeleteEpisode,
+      addEpisode,
+      updateEpisode,
+      deleteEpisode,
+      filmName,
+      filmId,
     };
   },
 };
