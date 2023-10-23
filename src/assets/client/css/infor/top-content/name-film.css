@@ -1,0 +1,20 @@
+div.content {
+    padding: 20px;
+}
+div.top_content {
+    width: 100%;
+}
+div.top_content .name_film {
+    width: 100%;
+}
+div.top_content .name_film p {
+    color: var(--titleColor);
+    font-weight: bolder;
+    font-size: 18px;
+    text-align: center;
+    margin: 0;
+    padding: 12px;
+    background-color: black;
+    border-radius: 5px;
+    border: solid 1px var(--titleColor);
+}

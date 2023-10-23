@@ -1,0 +1,370 @@
+.comment_film {
+    margin-left: 5px;
+    background-color: var(--childBackgroundColor);
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.comment_film .comment_head {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    padding: 6px;
+    background-color: var(--themeBackgroundColor);
+    color: var(--titleColor);
+}
+
+.comment_film .comment_head .comment_title {
+    width: fit-content;
+    font-size: var(--fontSize);
+    padding: 0 5px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.comment_film .comment_head .comment_nav select {
+    border: none;
+    outline: none;
+    margin: 0;
+    padding: 3px 15px;
+    color: var(--themeColor);
+    font-size: var(--fontSizeMini);
+    background-color: var(--themeBackgroundColor);
+    border: solid 1px;
+}
+
+.comment_film .comment_head .comment_nav select option {
+    margin: 0;
+}
+
+.comment_film .comment_container {
+    width: 100%;
+    margin: auto;
+    margin-top: 5px;
+    padding: 10px;
+}
+
+.comment_film .comment_container {
+    background-color: var(--backgroundColor);
+}
+
+.comment_film .comment_container form {
+   
+    justify-content: end;
+    width: 100%;
+    /* margin: auto; */
+    font-size: var(--fontSize);
+}
+
+.comment_film .comment_container form div {
+    margin-left: 3px;
+    /* border: solid 2px var(--themeBackgroundColor); */
+    border-radius: 5px;
+}
+
+.comment_film .comment_container form input[type="submit"] {
+    margin-left: 0px;
+    padding: 2px 10px;
+    background-color: var(--buttonBackgroundColor);
+    color: var(--buttonColor);
+    border: solid 1px var(--themeColor);
+    border-radius: 5px;
+    text-shadow: var(--textShadow);
+    box-shadow: var(--boxShadow) inset;
+}
+
+.comment_film .comment_container form input[type="text"] {
+    padding: 3px 10px;
+    flex: 1;
+    width: 50px;
+    outline: none;
+    border: solid 2px var(--themeBackgroundColor);
+    border-radius: 5px;
+}
+
+.comment_film .comment_container form input[type="submit"]:hover {
+    background-color: var(--buttonBackgroundColorOnHover);
+}
+
+.comment_film .comment_container .comment_list {
+    padding: 10px 0;
+}
+
+.comment_list li {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #2d2d2d;
+}
+.comment_list li .c_comment_head {
+    width: 70px;
+    height: 70px;
+    margin-right: 10px;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 70px;
+}
+.comment_list li .c_comment_head a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+
+}
+.comment_list li > div:last-child {
+   
+    flex: 1;
+}
+.comment_list li > div .c_comment_body button,a {
+    text-decoration: none;
+    color:  white;
+    font-size: var(--fontSize);
+    font-weight: bolder;
+    background: none; 
+    border: none;
+    padding: 0 ; 
+}
+.comment_list li > div .c_comment_body p {
+    margin: 0;
+}
+.comment_list li > div .c_comment_body .c_comment_content {
+    font-size: var(--fontSizeMini);
+    color: #afaaaa;
+}
+.comment_list li > div .c_comment_body .c_comment_time {
+    font-size: var(--fontSizeMini);
+    color: #7d7d7d;
+}
+
+.login-comment a {
+    display: inline-block;
+    color: #cac9c9;
+    background-color: red;
+    padding: 5px 10px;
+    margin-left: 42%;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.7s ; 
+
+}
+.login-comment a:hover {
+    opacity: 0.3; 
+}
+
+.comment_head.border-none {
+    border:none; 
+    background: none ; 
+    padding-left: 0px;
+}
+.comment_head.border-none button {
+    color: #cac9c9; 
+    border-radius: 5px; 
+    padding: 5px 10px; 
+    background-color: red ; 
+}
+
+.form-evaluate  {
+    position: fixed; 
+    min-width: 525px; 
+    min-height: 150px;
+    top: 40vh;
+    transition: top 0.3s ease 0s;
+    left: 40vw;
+    background-color: #2d2d2d; 
+    z-index: 9; 
+    box-shadow: 1px 1px 27px 1px rgb(193 193 193 / 75%);
+    border-radius: 10px;
+    padding: 10px; 
+    transition: 0.3s all;
+}
+.form-evaluate.un_active {
+    display: none;
+}
+.form-evaluate.active {
+    display: block;
+}
+
+.form-evaluate .head-evaluate{
+    display: flex;
+    color: #cac9c9;
+    justify-content: space-between;
+    font-size: 28px;
+    font-weight: bold;
+}
+.head-evaluate #exits {
+    background-color: firebrick ; 
+    
+}
+.head-evaluate #exits i {
+    color: #cac9c9 ; 
+}
+.start {
+    margin: 10px;
+    display: flex;
+    justify-content: center; 
+
+}
+.start i {
+    font-size: 40px; 
+    color : white ; 
+    margin: 0 3px;
+
+}
+.start i:hover {
+    cursor: pointer;
+    scale: 1.5; 
+}
+.start i.star-active {
+    color: yellow ;     
+}
+.btn-submit {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px; 
+
+}
+.btn-submit button  {
+    display: inline-block;
+    padding: 5px 10px; 
+    background-color: green; 
+    border-radius: 5px;
+    color: #cac9c9; 
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+.comment_container .comment {
+    width: 100%;
+    height: 50px; 
+    outline: none;
+    flex: 1;
+    background: #000;
+    color: #fff;
+    padding: 10px;
+    font: 400 14px roboto;
+}
+.btn_cmt {
+    padding: 5px 10px;
+    background-color:#cb5353;  
+    border-radius: 5px;
+}
+.btn_cmt i {
+    color: white;
+    font-size: 20px; 
+}
+.div_comment {
+    display: flex;
+    display: flex;
+    justify-content: space-between; 
+}
+.bt_load_cm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3a79af;
+    cursor: pointer;
+    padding: 10px 0px;
+    border-radius: 5px;
+    border-bottom: 3px solid #4b4b4b;
+}
+.bt_load_cm:hover{
+    opacity: 0.8;
+}
+.bt_load_cm button{
+    background: none; 
+    border: none;
+    color: #fff;
+}
+.comment_container .div_comment i, #btn_cmt {
+    color: #cac9c9; 
+    background-color: rgb(226, 94, 91,1) ; 
+    padding: 5px 10px; 
+    border-radius: 5px;
+    border: solid 1px var(--themeColor);
+    cursor: pointer;
+   
+}
+#btn_cmt {
+    width: fit-content;
+    text-align: center;
+    border-radius: 5px;
+    background-color: var(--buttonBackgroundColor);
+    color: var(--buttonColor);
+    font-size: var(--fontSizeMini);
+    padding: 5px 20px;
+    border: solid 1px var(--themeColor);
+    text-shadow: var(--textShadow);
+    box-shadow: var(--boxShadow) inset;
+}
+
+.c_comment_body div p {
+    display: inline-block;
+    margin-right: 5px !important;
+}
+.c_comment_user {
+    font-size: 17px !important;
+    color: #ffc107 !important;
+}
+.c_comment_head img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px
+}
+
+.comment_list li {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+}
+.comment_list li .parent_comment {
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px 5px ; 
+    background-color: #000;
+   
+}
+.comment_list li .parent_comment, .sub_cmt {
+    display: flex;
+    margin-top: 5px; 
+    
+}
+.comment_list li .sub_cmt {
+    margin-left: 5px ; 
+    width: 95%;
+    border-radius: 5px;
+    padding: 10px 5px ; 
+    background-color: #000;
+
+}
+.div_b {
+    width: 100%;
+    margin-left: 30px; 
+    border-left: 2px dotted  #000;
+    margin-top: 2px;
+}
+.comment_list form {
+    margin-top: 5px; 
+}
+form.un_active {
+    display: none; 
+}
+form.active {
+    display: block;
+}
+.comment_container .comment_a {
+    width: 100%;
+    height: 50px;
+    outline: none;
+    flex: 1;
+    background: #000;
+    color: #fff;
+    padding: 10px;
+    font: 400 14px roboto;
+}
