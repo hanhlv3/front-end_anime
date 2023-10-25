@@ -23,7 +23,7 @@
       <div class="icon">
         <a
           href=""
-          onclick="toggle()"
+          @click.prevent="toggleDrop"
           class="g_nav_btn p-lg-4 p-md-3 p-sm-2"
           id="bu"
           ><i class="ti-menu"></i
@@ -43,6 +43,12 @@
 <script>
 export default {
   name: "NarBar",
+  setup(props, context) {
+    const toggleDrop = () => context.emit("toggleDrop");
+    return {
+      toggleDrop,
+    };
+  },
 };
 </script>
 <style></style>

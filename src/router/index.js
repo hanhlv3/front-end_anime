@@ -1,14 +1,14 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHistory } from 'vue-router'
 
-import { admin_router } from "./admin_router";
-import { client_router } from "./client_router";
+import { admin_router } from './admin_router'
+import { client_router } from './client_router'
 
-const routes = [admin_router, client_router];
+const routes = [admin_router, client_router]
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
-});
+})
 
 // router.beforeEach((to, from, next) => {
 //   const isAuthenticated = () => {};
@@ -20,4 +20,4 @@ const router = createRouter({
 //   } else next();
 // });
 
-export default router;
+export default router

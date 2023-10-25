@@ -286,6 +286,7 @@ a#logo-home {
 
 .g_heading {
     width: 100%;
+    display: flex;
     margin-bottom: 10px;
     background-color: var(--headerBackgroundColor);
     border-radius: 5px;
@@ -296,7 +297,7 @@ a#logo-home {
 .g_heading div {
     display: inline-block;
     position: relative;
-    padding: 10px 50px 10px 30px ;
+    padding: 13px 50px 14px 30px ;
     font-size: 24px; 
     font-weight: 500;
     color : var(--titleColor);

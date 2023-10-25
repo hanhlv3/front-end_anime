@@ -37,11 +37,7 @@
     <form v-on:submit.prevent="addEpisode">
       <div class="space-y-4">
         <div>
-          <label
-            for="name"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Link</label
-          >
+          <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Link</label>
           <input
             type="text"
             name="title"
@@ -53,11 +49,7 @@
           />
         </div>
         <div>
-          <label
-            for="name"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Episode number</label
-          >
+          <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Episode number</label>
           <input
             type="number"
             name="title"
@@ -81,34 +73,34 @@
 </template>
 
 <script>
-import { reactive } from "vue";
-import episodeApi from "@/api/episode.api";
+import { reactive } from 'vue'
+import episodeApi from '@/api/episode.api'
 export default {
-  name: "AddEpisode",
-  props: ["filmId"],
+  name: 'AddEpisode',
+  props: ['filmId'],
   setup(props, context) {
-    const closeAdd = () => context.emit("close-add");
+    const closeAdd = () => context.emit('close-add')
 
     // eslint-disable-next-line vue/no-setup-props-destructure
-    const filmId = props.filmId;
+    const filmId = props.filmId
     const episode = reactive({
       episodeLink: null,
       filmId: filmId,
       episodeNumber: null,
-    });
+    })
 
     const addEpisode = async () => {
-      const check = await episodeApi.insertEpisode(episode);
-      context.emit("add-episode", check);
-    };
+      const check = await episodeApi.insertEpisode(episode)
+      context.emit('add-episode', check)
+    }
 
     return {
       closeAdd,
       addEpisode,
       episode,
-    };
+    }
   },
-};
+}
 </script>
 
 <style scoped></style>

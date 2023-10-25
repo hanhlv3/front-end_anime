@@ -1,8 +1,10 @@
 <template>
   <div class="body">
     <div class="main">
-      <div id="navbar"><nar-bar /></div>
-      <div class="drop_down" id="drop"><drop-down /></div>
+      <div id="navbar">
+        <nar-bar @toggleDrop="isOpenDropDown = !isOpenDropDown" />
+      </div>
+      <div v-if="isOpenDropDown" class="drop_down" id="drop"><drop-down /></div>
       <div id="content">
         <router-view></router-view>
       </div>
@@ -12,18 +14,30 @@
 </template>
 
 <script>
-import NarBar from "@/components/clients/NarBar.vue";
-import DropDown from "@/components/clients/DropDown.vue";
+import { ref } from 'vue'
+import { useStore } from 'vuex'
+
+import NarBar from '@/components/clients/NarBar.vue'
+import DropDown from '@/components/clients/DropDown.vue'
 export default {
-  name: "DefaultLayout",
+  name: 'DefaultLayout',
   components: { NarBar, DropDown },
-};
+  setup() {
+    const store = useStore()
+    store.dispatch('category/getCategories')
+    store.dispatch('film/getFilms')
+    const isOpenDropDown = ref(false)
+
+    return {
+      isOpenDropDown,
+    }
+  },
+}
 </script>
 
 <style>
 .body {
   width: 100%;
-  height: 100vh;
   padding: 0 8vw;
   font-size: 14px;
   font-family: roboto, sans-serif;

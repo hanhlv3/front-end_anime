@@ -37,11 +37,7 @@
     <form v-on:submit.prevent="addFilm">
       <div class="space-y-4">
         <div>
-          <label
-            for="name"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Name</label
-          >
+          <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
           <input
             type="text"
             name="title"
@@ -54,9 +50,7 @@
         </div>
 
         <div>
-          <label
-            for="price"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >Episode quantity
           </label>
           <input
@@ -70,9 +64,7 @@
           />
         </div>
         <div>
-          <label
-            for="category-create"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          <label for="category-create" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >Image</label
           >
           <input
@@ -86,12 +78,7 @@
           />
         </div>
         <div>
-          <label
-            for="price"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            Release date
-          </label>
+          <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Release date </label>
           <input
             type="date"
             name="price"
@@ -103,9 +90,7 @@
           />
         </div>
         <div>
-          <label
-            for="description"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >Description</label
           >
 
@@ -119,16 +104,10 @@
           ></ckeditor>
         </div>
         <div>
-          <label
-            for="discount-create"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          <label for="discount-create" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >Category</label
           >
-          <div
-            v-for="cat in categories"
-            :key="cat.categoryId"
-            class="select-category flex justify-start ml-3 mb-3"
-          >
+          <div v-for="cat in categories" :key="cat.categoryId" class="select-category flex justify-start ml-3 mb-3">
             <input
               type="checkbox"
               name="price"
@@ -138,9 +117,7 @@
               :value="cat.categoryId"
               v-model="film.categories"
             />
-            <label
-              for="discount-create"
-              class="inline-block text-sm font-medium text-gray-900 dark:text-white"
+            <label for="discount-create" class="inline-block text-sm font-medium text-gray-900 dark:text-white"
               >{{ cat.categoryName }}
             </label>
           </div>
@@ -157,19 +134,19 @@
 </template>
 
 <script>
-import { ref, reactive, computed } from "vue";
-import { useStore } from "vuex";
-import CKEditor from "@ckeditor/ckeditor5-vue";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import filmApi from "@/api/films.api";
+import { ref, reactive, computed } from 'vue'
+import { useStore } from 'vuex'
+import CKEditor from '@ckeditor/ckeditor5-vue'
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
+import filmApi from '@/api/films.api'
 export default {
-  name: "AddFilm",
+  name: 'AddFilm',
   components: {
     ckeditor: CKEditor.component,
   },
   setup(props, context) {
-    const store = useStore();
-    store.dispatch("category/getCategories");
+    const store = useStore()
+    store.dispatch('category/getCategories')
 
     const film = reactive({
       filmName: null,
@@ -177,25 +154,25 @@ export default {
       episodesQuantity: null,
       releaseDate: null,
       categories: [],
-    });
-    const isSelectedFile = ref(false);
-    const image = ref(null);
+    })
+    const isSelectedFile = ref(false)
+    const image = ref(null)
 
     const close = () => {
-      context.emit("close-add");
-    };
+      context.emit('close-add')
+    }
     const fileSelected = (event) => {
-      const file = event.target.files[0];
-      image.value = file;
-      isSelectedFile.value = !isSelectedFile.value;
-    };
+      const file = event.target.files[0]
+      image.value = file
+      isSelectedFile.value = !isSelectedFile.value
+    }
 
     const addFilm = async () => {
-      if (!isSelectedFile.value) return;
+      if (!isSelectedFile.value) return
 
-      const check = await filmApi.insertFilm(film, image.value);
-      context.emit("add-film", check);
-    };
+      const check = await filmApi.insertFilm(film, image.value)
+      context.emit('add-film', check)
+    }
 
     return {
       close,
@@ -205,9 +182,9 @@ export default {
       addFilm,
       film,
       image,
-    };
+    }
   },
-};
+}
 </script>
 
 <style></style>

@@ -8,9 +8,7 @@
         </div>
       </div>
       <div class="h-[calc(100vh-50px)] bg-gray-800 py-[20px]">
-        <div
-          class="flex flex-col justify-between h-full px-[20px] space-y-[10px]"
-        >
+        <div class="flex flex-col justify-between h-full px-[20px] space-y-[10px]">
           <div class="flex flex-col justify-between space-y-[10px]">
             <router-link
               :to="{ name: 'HomeAdmin' }"
@@ -72,10 +70,7 @@
                 Category
               </div>
             </router-link>
-            <div
-              class="flex-col ml-10 transition duration-400 ease-linear"
-              v-show="showCategory"
-            >
+            <div class="flex-col ml-10 transition duration-400 ease-linear" v-show="showCategory">
               <router-link
                 :to="{ name: 'CategoryList' }"
                 class="block flex relative items-center py-[5px] px-[5px] rounded-md border-gray-200 hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-linear"
@@ -220,16 +215,10 @@
       </div>
     </div>
     <div class="w-full h-full bg-gray-400">
-      <div
-        class="h-[50px] bg-gray-100 flex items-center shadow-sm px-[20px] w-full py-[10px] z-10 border-b"
-      >
+      <div class="h-[50px] bg-gray-100 flex items-center shadow-sm px-[20px] w-full py-[10px] z-10 border-b">
         <!-- Hambuger menu -->
         <div class="cursor-pointer w-[30px]" @click="toggleSideBar">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 448 512"
-            class="w-[25px] h-[25px]"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-[25px] h-[25px]">
             <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
             <path
               d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"
@@ -244,9 +233,7 @@
             <form class="flex items-center w-[500px]">
               <label for="voice-search" class="sr-only">Search</label>
               <div class="relative w-full">
-                <div
-                  class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"
-                >
+                <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                   <svg
                     aria-hidden="true"
                     class="w-5 h-auto text-gray-500 dark:text-gray-400"
@@ -268,10 +255,7 @@
                   placeholder="Search..."
                   required
                 />
-                <router-link
-                  to="/"
-                  class="flex absolute inset-y-0 right-0 items-center pr-3"
-                >
+                <router-link to="/" class="flex absolute inset-y-0 right-0 items-center pr-3">
                   <svg
                     aria-hidden="true"
                     class="w-4 h-4 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
@@ -291,10 +275,7 @@
           </div>
           <!-- User login -->
           <div class="w-[200px]">
-            <div
-              class="flex items-center justify-start space-x-4"
-              @click="toggleDrop"
-            >
+            <div class="flex items-center justify-start space-x-4" @click="toggleDrop">
               <img
                 class="w-10 h-10 rounded-full border-2 border-gray-50"
                 src="https://yt3.ggpht.com/hqsxh-Vnbw9OK0_X4DAWh6RkmEUVnL-82SRCyh-IKr9fIXR8zhUCRdBEwgWWL_14q_L8Piod=s108-c-k-c0x00ffffff-no-rj"
@@ -302,9 +283,7 @@
               />
               <div class="font-semibold dark:text-white text-left">
                 <div>Madona ,Dev OP</div>
-                <div class="text-xs text-gray-500 dark:text-gray-400">
-                  Admin
-                </div>
+                <div class="text-xs text-gray-500 dark:text-gray-400">Admin</div>
               </div>
             </div>
             <!-- Drop down -->
@@ -318,28 +297,13 @@
             >
               <div class="py-1 text-left" role="none">
                 <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-                <a
-                  href="#"
-                  class="text-gray-700 block px-4 py-2 text-lg"
-                  role="menuitem"
-                  tabindex="-1"
-                  id="menu-item-0"
+                <a href="#" class="text-gray-700 block px-4 py-2 text-lg" role="menuitem" tabindex="-1" id="menu-item-0"
                   >Account settings</a
                 >
-                <a
-                  href="#"
-                  class="text-gray-700 block px-4 py-2 text-lg"
-                  role="menuitem"
-                  tabindex="-1"
-                  id="menu-item-1"
+                <a href="#" class="text-gray-700 block px-4 py-2 text-lg" role="menuitem" tabindex="-1" id="menu-item-1"
                   >Support</a
                 >
-                <a
-                  href="#"
-                  class="text-gray-700 block px-4 py-2 text-lg"
-                  role="menuitem"
-                  tabindex="-1"
-                  id="menu-item-2"
+                <a href="#" class="text-gray-700 block px-4 py-2 text-lg" role="menuitem" tabindex="-1" id="menu-item-2"
                   >License</a
                 >
                 <form method="POST" action="#" role="none">
@@ -368,52 +332,50 @@
   </div>
 </template>
 <script>
-import { ref, watchEffect } from "vue";
-import { useRouter } from "vue-router";
+import { ref, watchEffect } from 'vue'
+import { useRouter } from 'vue-router'
 
 export default {
-  name: "AdminLayout",
+  name: 'AdminLayout',
   setup() {
-    const showDropDown = ref(false);
-    const showSide = ref(true);
-    const showCategory = ref(false);
-    const showFilm = ref(false);
+    const showDropDown = ref(false)
+    const showSide = ref(true)
+    const showCategory = ref(false)
+    const showFilm = ref(false)
 
-    const toggleSideBar = () => (showSide.value = !showSide.value);
-    const toggleDrop = () => (showDropDown.value = !showDropDown.value);
+    const toggleSideBar = () => (showSide.value = !showSide.value)
+    const toggleDrop = () => (showDropDown.value = !showDropDown.value)
     const toggleCategory = (event) => {
-      event.preventDefault();
-      showCategory.value = !showCategory.value;
-    };
+      event.preventDefault()
+      showCategory.value = !showCategory.value
+    }
     const toggleFilm = (event) => {
-      event.preventDefault();
-      showFilm.value = !showFilm.value;
-    };
+      event.preventDefault()
+      showFilm.value = !showFilm.value
+    }
 
-    const router = useRouter();
-    const sideBar = ref(null);
+    const router = useRouter()
+    const sideBar = ref(null)
 
-    const route = router.currentRoute.value;
-    sideBar.value = route.meta.sideBar;
+    const route = router.currentRoute.value
+    sideBar.value = route.meta.sideBar
 
     const updateShow = () => {
-      if (sideBar.value === "episode" || sideBar.value === "film-list")
-        showFilm.value = true;
-      else showFilm.value = false;
+      if (sideBar.value === 'episode' || sideBar.value === 'film-list') showFilm.value = true
+      else showFilm.value = false
 
-      if (sideBar.value === "add-category" || sideBar.value === "category-list")
-        showCategory.value = true;
-      else showCategory.value = false;
-    };
+      if (sideBar.value === 'add-category' || sideBar.value === 'category-list') showCategory.value = true
+      else showCategory.value = false
+    }
 
-    updateShow();
+    updateShow()
 
     // watch
     watchEffect(() => {
-      const newSideBar = router.currentRoute.value.meta.sideBar;
-      sideBar.value = newSideBar;
-      updateShow();
-    });
+      const newSideBar = router.currentRoute.value.meta.sideBar
+      sideBar.value = newSideBar
+      updateShow()
+    })
     return {
       showCategory,
       showDropDown,
@@ -424,8 +386,8 @@ export default {
       toggleCategory,
       toggleFilm,
       sideBar,
-    };
+    }
   },
-};
+}
 </script>
 <style scoped></style>

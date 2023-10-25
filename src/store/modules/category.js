@@ -1,27 +1,27 @@
-import categoriesApi from "@/api/categories.api.js"; // call api
+import categoriesApi from '@/api/categories.api.js' // call api
 
 // initial state
 const state = () => ({
   categories: [],
-});
+})
 
 // getters
-const getters = {};
+const getters = {}
 
 // actions
 const actions = {
   async getCategories({ commit }) {
-    const categories = await categoriesApi.getAllCategories();
-    commit("setCategories", categories);
+    const categories = await categoriesApi.getAllCategories()
+    commit('setCategories', categories)
   },
-};
+}
 
 // mutations
 const mutations = {
   setCategories(state, categories) {
-    state.categories = categories;
+    state.categories = categories
   },
-};
+}
 
 export default {
   namespaced: true,
@@ -29,4 +29,4 @@ export default {
   getters,
   actions,
   mutations,
-};
+}

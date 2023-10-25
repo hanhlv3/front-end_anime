@@ -37,11 +37,7 @@
     <form v-on:submit.prevent="updateCategory">
       <div class="space-y-4">
         <div class="mb-3">
-          <label
-            for="name"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Name</label
-          >
+          <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
           <input
             type="text"
             name="title"
@@ -63,32 +59,32 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import categoriesApi from "@/api/categories.api";
+import { ref } from 'vue'
+import categoriesApi from '@/api/categories.api'
 export default {
-  name: "UpdateCategory",
-  props: ["category"],
+  name: 'UpdateCategory',
+  props: ['category'],
   setup(props, context) {
-    const closeUpdate = () => context.emit("close-update");
-    const categoryName = ref(null);
+    const closeUpdate = () => context.emit('close-update')
+    const categoryName = ref(null)
 
     // eslint-disable-next-line vue/no-setup-props-destructure
-    const cat = props.category;
-    categoryName.value = cat.categoryName;
+    const cat = props.category
+    categoryName.value = cat.categoryName
     const updateCategory = async () => {
       const check = await categoriesApi.updateCategory(cat.categoryId, {
         categoryName: categoryName.value,
-      });
-      context.emit("update-category", check);
-    };
+      })
+      context.emit('update-category', check)
+    }
     return {
       closeUpdate,
       cat,
       updateCategory,
       categoryName,
-    };
+    }
   },
-};
+}
 </script>
 
 <style></style>

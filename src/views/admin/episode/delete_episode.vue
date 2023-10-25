@@ -70,25 +70,25 @@
 </template>
 
 <script>
-import episodeApi from "@/api/episode.api";
+import episodeApi from '@/api/episode.api'
 export default {
-  name: "DeleteEpisode",
-  props: ["episode"],
+  name: 'DeleteEpisode',
+  props: ['episode'],
   setup(props, context) {
-    const closeDelete = () => context.emit("close-delete");
+    const closeDelete = () => context.emit('close-delete')
     // eslint-disable-next-line vue/no-setup-props-destructure
-    const episode = props.episode;
+    const episode = props.episode
 
     const deleteEpisode = async () => {
-      const check = await episodeApi.deleteEpisode(episode.episodeId);
-      context.emit("delete-episode", check);
-    };
+      const check = await episodeApi.deleteEpisode(episode.episodeId)
+      context.emit('delete-episode', check)
+    }
     return {
       closeDelete,
       deleteEpisode,
-    };
+    }
   },
-};
+}
 </script>
 
 <style></style>

@@ -48,9 +48,7 @@
         d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
       ></path>
     </svg>
-    <h3 class="mb-6 text-lg text-gray-500 dark:text-gray-400">
-      Are you sure you want to delete {{ film.filmName }} ?
-    </h3>
+    <h3 class="mb-6 text-lg text-gray-500 dark:text-gray-400">Are you sure you want to delete {{ film.filmName }} ?</h3>
     <a
       href="#"
       class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2.5 text-center mr-2 dark:focus:ring-red-900"
@@ -69,29 +67,29 @@
 </template>
 
 <script>
-import filmApi from "@/api/films.api";
+import filmApi from '@/api/films.api'
 export default {
-  name: "DeleteFilm",
-  props: ["film"],
+  name: 'DeleteFilm',
+  props: ['film'],
   setup(props, context) {
-    const closeDelete = () => context.emit("close-delete");
+    const closeDelete = () => context.emit('close-delete')
     // eslint-disable-next-line vue/no-setup-props-destructure
-    const film = props.film;
-    console.log("Film name", film.filmName);
+    const film = props.film
+    console.log('Film name', film.filmName)
 
     const deleteFilm = async () => {
-      console.log(film.filmId);
-      const check = await filmApi.deleteFilm(film.filmId);
-      context.emit("delete-film", check);
-    };
+      console.log(film.filmId)
+      const check = await filmApi.deleteFilm(film.filmId)
+      context.emit('delete-film', check)
+    }
     return {
       closeDelete,
       deleteFilm,
       // eslint-disable-next-line vue/no-dupe-keys
       film,
-    };
+    }
   },
-};
+}
 </script>
 
 <style></style>

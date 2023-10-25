@@ -1,33 +1,56 @@
 <template>
   <div class="tab-links">
-    <a href="#" class="tab"><i>Thể loại</i></a>
-    <a href="#" class="tab tab-active"><i>Năm</i></a>
-    <a href="#" class="tab"><i>Lọc phim</i></a>
-    <a class="tab"><i>Phim lẻ</i></a>
+    <a
+      href="#"
+      @click.prevent="tabActive = 'category'"
+      class="tab"
+      :class="{ 'tab-active': tabActive == 'category' }"
+      ><i>Thể loại</i></a
+    >
+    <a
+      href="#"
+      @click.prevent="tabActive = 'year'"
+      class="tab"
+      :class="{ 'tab-active': tabActive == 'year' }"
+      ><i>Năm</i></a
+    >
+    <a
+      href="#"
+      @click.prevent="tabActive = 'filter'"
+      class="tab"
+      :class="{ 'tab-active': tabActive == 'filter' }"
+      ><i>Lọc phim</i></a
+    >
+    <a
+      href="#"
+      class="tab"
+      @click="tabActive = 'single'"
+      :class="{ 'tab-active': tabActive == 'single' }"
+      ><i>Phim lẻ</i></a
+    >
   </div>
 
   <div class="tab-content">
-    <div class="tab-item" id="category">
-      <a href="">Hi bro</a>
-      <a href="">Hi bro</a>
-      <a href="">Hi bro</a>
-      <a href="">Hi bro</a>
-      <a href="">Hi bro</a>
-      <a href="">Hi bro</a>
-      <a href="">Hi bro</a>
-      <a href="">Hi bro</a>
-    </div>
-
-    <div class="tab-item un_active" id="year">
-      <a href=""> </a>
-    </div>
-    <div class="tab-item un_active" id="loc"></div>
+    <tab-item-category v-if="tabActive == 'category'" />
+    <tab-item-year v-if="tabActive == 'year'" />
   </div>
 </template>
 
 <script>
+import { ref } from "vue";
+
+import TabItemYear from "./TabItemYear.vue";
+import TabItemCategory from "./TabItemCategory.vue";
 export default {
   name: "DropDown",
+  components: { TabItemCategory, TabItemYear },
+  setup() {
+    const tabActive = ref("category");
+
+    return {
+      tabActive,
+    };
+  },
 };
 </script>
 

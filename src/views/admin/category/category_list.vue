@@ -5,20 +5,13 @@
     <div class="w-full mb-1">
       <div class="mb-4">
         <nav class="flex mb-5" aria-label="Breadcrumb">
-          <ol
-            class="inline-flex items-center space-x-1 text-sm font-medium md:space-x-2"
-          >
+          <ol class="inline-flex items-center space-x-1 text-sm font-medium md:space-x-2">
             <li class="inline-flex items-center">
               <a
                 href="#"
                 class="inline-flex items-center text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-white"
               >
-                <svg
-                  class="w-5 h-5 mr-2.5"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg class="w-5 h-5 mr-2.5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
                   ></path>
@@ -49,15 +42,9 @@
             </li>
           </ol>
         </nav>
-        <h1
-          class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white"
-        >
-          All category
-        </h1>
+        <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">All category</h1>
       </div>
-      <div
-        class="items-center justify-between block sm:flex md:divide-x md:divide-gray-100 dark:divide-gray-700"
-      >
+      <div class="items-center justify-between block sm:flex md:divide-x md:divide-gray-100 dark:divide-gray-700">
         <div class="flex items-center mb-4 sm:mb-0">
           <form class="sm:pr-3" action="#" method="GET">
             <label for="products-search" class="sr-only">Search</label>
@@ -77,12 +64,7 @@
                 href="#"
                 class="inline-flex justify-center p-1 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
-                <svg
-                  class="w-6 h-6"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path
                     fill-rule="evenodd"
                     d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
@@ -94,12 +76,7 @@
                 href="#"
                 class="inline-flex justify-center p-1 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
-                <svg
-                  class="w-6 h-6"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path
                     fill-rule="evenodd"
                     d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
@@ -111,12 +88,7 @@
                 href="#"
                 class="inline-flex justify-center p-1 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
-                <svg
-                  class="w-6 h-6"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path
                     fill-rule="evenodd"
                     d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
@@ -128,12 +100,7 @@
                 href="#"
                 class="inline-flex justify-center p-1 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
-                <svg
-                  class="w-6 h-6"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"
                   ></path>
@@ -161,9 +128,7 @@
     <div class="overflow-x-auto">
       <div class="inline-block min-w-full align-middle">
         <div class="overflow-hidden shadow">
-          <table
-            class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600"
-          >
+          <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600">
             <thead class="bg-gray-100 dark:bg-gray-700">
               <tr>
                 <th scope="col" class="p-4">
@@ -177,41 +142,18 @@
                     <label for="checkbox-all" class="sr-only">checkbox</label>
                   </div>
                 </th>
-                <th
-                  scope="col"
-                  class="p-4 text-xs font-medium text-gray-500 uppercase dark:text-gray-400"
-                >
-                  INDEX
-                </th>
-                <th
-                  scope="col"
-                  class="p-4 text-xs font-medium text-gray-500 uppercase dark:text-gray-400"
-                >
-                  NAME
-                </th>
-                <th
-                  scope="col"
-                  class="p-4 text-xs font-medium text-gray-500 uppercase dark:text-gray-400"
-                >
+                <th scope="col" class="p-4 text-xs font-medium text-gray-500 uppercase dark:text-gray-400">INDEX</th>
+                <th scope="col" class="p-4 text-xs font-medium text-gray-500 uppercase dark:text-gray-400">NAME</th>
+                <th scope="col" class="p-4 text-xs font-medium text-gray-500 uppercase dark:text-gray-400">
                   CREATED-AT
                 </th>
-                <th
-                  scope="col"
-                  class="p-4 text-xs font-medium text-gray-500 uppercase dark:text-gray-400"
-                >
+                <th scope="col" class="p-4 text-xs font-medium text-gray-500 uppercase dark:text-gray-400">
                   UPDATED-AT
                 </th>
-                <th
-                  scope="col"
-                  class="p-4 text-xs font-medium text-gray-500 uppercase dark:text-gray-400"
-                >
-                  Actions
-                </th>
+                <th scope="col" class="p-4 text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Actions</th>
               </tr>
             </thead>
-            <tbody
-              class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700"
-            >
+            <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
               <tr
                 v-for="cat in paginatedCategories"
                 :key="cat.categoryId"
@@ -228,29 +170,19 @@
                     <label for="check" class="sr-only">checkbox</label>
                   </div>
                 </td>
-                <td
-                  class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400"
-                >
+                <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
                   {{ categories.indexOf(cat) + 1 }}
                 </td>
-                <td
-                  class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
+                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   {{ cat.categoryName }}
                 </td>
                 <td
                   class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400"
                 >
-                  {{ cat.createdAt.substring(0, cat.createdAt.indexOf("T")) }}
+                  {{ cat.createdAt.substring(0, cat.createdAt.indexOf('T')) }}
                 </td>
-                <td
-                  class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  {{
-                    cat.updatedAt !== null
-                      ? cat.updatedAt.substring(0, cat.updatedAt.indexOf("T"))
-                      : "Not update"
-                  }}
+                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  {{ cat.updatedAt !== null ? cat.updatedAt.substring(0, cat.updatedAt.indexOf('T')) : 'Not update' }}
                 </td>
                 <td class="p-4 space-x-2 whitespace-nowrap">
                   <button
@@ -269,9 +201,7 @@
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
                     >
-                      <path
-                        d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
-                      ></path>
+                      <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path>
                       <path
                         fill-rule="evenodd"
                         d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
@@ -322,12 +252,7 @@
         class="inline-flex justify-center p-1 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
         @click.prevent="previousPage"
       >
-        <svg
-          class="w-7 h-7"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path
             fill-rule="evenodd"
             d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
@@ -340,12 +265,7 @@
         class="inline-flex justify-center p-1 mr-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
         @click.prevent="nextPage"
       >
-        <svg
-          class="w-7 h-7"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path
             fill-rule="evenodd"
             d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
@@ -357,17 +277,11 @@
         >Showing
         <span class="font-semibold text-gray-900 dark:text-white"
           >{{ currentPage * categoriesPerPage - categoriesPerPage + 1 }} -
-          {{
-            totalPage == currentPage
-              ? categories.length
-              : currentPage * categoriesPerPage
-          }}</span
+          {{ totalPage == currentPage ? categories.length : currentPage * categoriesPerPage }}</span
         >
 
         of
-        <span class="font-semibold text-gray-900 dark:text-white">{{
-          categories.length
-        }}</span></span
+        <span class="font-semibold text-gray-900 dark:text-white">{{ categories.length }}</span></span
       >
     </div>
     <div class="flex items-center space-x-3">
@@ -376,12 +290,7 @@
         class="inline-flex items-center justify-center flex-1 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         @click.prevent="previousPage"
       >
-        <svg
-          class="w-5 h-5 mr-1 -ml-1"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg class="w-5 h-5 mr-1 -ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path
             fill-rule="evenodd"
             d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
@@ -396,12 +305,7 @@
         @click.prevent="nextPage"
       >
         Next
-        <svg
-          class="w-5 h-5 ml-1 -mr-1"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg class="w-5 h-5 ml-1 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path
             fill-rule="evenodd"
             d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
@@ -429,11 +333,7 @@
   />
 
   <!-- Add category Drawer -->
-  <add-category
-    v-if="isShowAdd"
-    @close-add="isShowAdd = !isShowAdd"
-    @add-category="addCategory"
-  />
+  <add-category v-if="isShowAdd" @close-add="isShowAdd = !isShowAdd" @add-category="addCategory" />
 
   <!-- toast message -->
   <div
@@ -443,20 +343,14 @@
     v-if="showToast"
   >
     <div class="flex">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        height="1em"
-        viewBox="0 0 448 512"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
         <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
         <path
           d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z"
         />
       </svg>
       <div class="ml-3 text-sm font-normal">
-        <span class="mb-1 text-sm font-semibold text-gray-900 dark:text-white"
-          >Notification</span
-        >
+        <span class="mb-1 text-sm font-semibold text-gray-900 dark:text-white">Notification</span>
         <div class="mb-2 text-sm font-normal">{{ messageToast }} tot</div>
         <a
           href="#"
@@ -473,13 +367,7 @@
         @click.prevent="showToast = false"
       >
         <span class="sr-only">Close</span>
-        <svg
-          class="w-3 h-3"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 14 14"
-        >
+        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
           <path
             stroke="currentColor"
             stroke-linecap="round"
@@ -494,116 +382,114 @@
 </template>
 
 <script>
-import { ref, computed } from "vue";
-import { useStore } from "vuex";
+import { ref, computed } from 'vue'
+import { useStore } from 'vuex'
 
-import AddCategory from "./add_category.vue";
-import UpdateCategory from "./update_category.vue";
-import DeleteCategory from "./delete_category.vue";
+import AddCategory from './add_category.vue'
+import UpdateCategory from './update_category.vue'
+import DeleteCategory from './delete_category.vue'
 
 export default {
-  name: "CategoryList",
+  name: 'CategoryList',
   components: { AddCategory, UpdateCategory, DeleteCategory },
   setup() {
-    const isShowAdd = ref(false);
-    const isShowUpdate = ref(false);
-    const isShowDelete = ref(false);
-    const showToast = ref(false);
-    const catSelected = ref(null);
-    const messageToast = ref(null);
+    const isShowAdd = ref(false)
+    const isShowUpdate = ref(false)
+    const isShowDelete = ref(false)
+    const showToast = ref(false)
+    const catSelected = ref(null)
+    const messageToast = ref(null)
 
-    const categoriesPerPage = ref(7);
-    const currentPage = ref(1);
+    const categoriesPerPage = ref(7)
+    const currentPage = ref(1)
 
-    const store = useStore();
-    const index = ref(0);
-    store.dispatch("category/getCategories");
+    const store = useStore()
+    const index = ref(0)
+    store.dispatch('category/getCategories')
 
-    const categories = computed(() => store.state.category.categories);
-    const totalPage = computed(() =>
-      Math.ceil(categories.value.length / categoriesPerPage.value)
-    );
-    console.log(totalPage.value, "out");
+    const categories = computed(() => store.state.category.categories)
+    const totalPage = computed(() => Math.ceil(categories.value.length / categoriesPerPage.value))
+    console.log(totalPage.value, 'out')
 
     const paginatedCategories = computed(() => {
-      const startIndex = (currentPage.value - 1) * categoriesPerPage.value;
-      const endIndex = startIndex + categoriesPerPage.value;
-      return categories.value.slice(startIndex, endIndex);
-    });
+      const startIndex = (currentPage.value - 1) * categoriesPerPage.value
+      const endIndex = startIndex + categoriesPerPage.value
+      return categories.value.slice(startIndex, endIndex)
+    })
 
     // next page
     const nextPage = () => {
       // total page
-      if (currentPage.value === totalPage.value) return;
-      currentPage.value = currentPage.value + 1;
-    };
+      if (currentPage.value === totalPage.value) return
+      currentPage.value = currentPage.value + 1
+    }
 
     // previous page
     const previousPage = () => {
-      if (currentPage.value === 1) return;
-      currentPage.value = currentPage.value - 1;
-    };
+      if (currentPage.value === 1) return
+      currentPage.value = currentPage.value - 1
+    }
 
     // open update
     const openDeleteCategory = (catItem) => {
-      catSelected.value = catItem;
-      isShowDelete.value = !isShowDelete.value;
-      catSelected.value = catItem;
-    };
+      catSelected.value = catItem
+      isShowDelete.value = !isShowDelete.value
+      catSelected.value = catItem
+    }
     const openUpdateCategory = (catItem) => {
-      catSelected.value = catItem;
-      isShowUpdate.value = !isShowUpdate.value;
-    };
+      catSelected.value = catItem
+      isShowUpdate.value = !isShowUpdate.value
+    }
 
     // function set up Toast
     function displayToast(message) {
-      showToast.value = true;
-      messageToast.value = message;
+      showToast.value = true
+      messageToast.value = message
     }
     // add category
     const addCategory = (isSuccess) => {
       if (isSuccess) {
         // insert susscess
-        displayToast("Insert category successfully");
-        isShowAdd.value = false;
-        store.dispatch("category/getCategories");
+        displayToast('Insert category successfully')
+        isShowAdd.value = false
+        store.dispatch('category/getCategories')
       } else {
         // insert fail
-        displayToast("Insert category failed");
+        displayToast('Insert category failed')
       }
       setTimeout(() => {
-        showToast.value = false;
-      }, 2000);
-    };
+        showToast.value = false
+      }, 2000)
+    }
 
     const updateCategory = (isSuccess) => {
       if (isSuccess) {
         // insert susscess
-        displayToast(" Update category successfully");
-        isShowUpdate.value = false;
-        store.dispatch("category/getCategories");
+        displayToast(' Update category successfully')
+        isShowUpdate.value = false
+        store.dispatch('category/getCategories')
       } else {
         // insert fail
-        displayToast(" Update category failed");
+        displayToast(' Update category failed')
       }
       setTimeout(() => {
-        showToast.value = false;
-      }, 2000);
-    };
+        showToast.value = false
+      }, 2000)
+    }
     const deleteCategory = (isSuccess) => {
       if (isSuccess) {
         // insert susscess
-        displayToast(" delete category successfully");
-        isShowDelete.value = false;
-        store.dispatch("category/getCategories");
+        displayToast(' delete category successfully')
+        isShowDelete.value = false
+        store.dispatch('category/getCategories')
       } else {
         // insert fail
-        displayToast(" delete category failed");
+        displayToast(' delete category failed')
       }
       setTimeout(() => {
-        showToast.value = false;
-      }, 2000);
-    };
+        showToast.value = false
+      }, 2000)
+    }
     return {
       isShowAdd,
       isShowUpdate,
@@ -624,9 +510,9 @@ export default {
       addCategory,
       updateCategory,
       deleteCategory,
-    };
+    }
   },
-};
+}
 </script>
 
 <style scoped>

@@ -37,11 +37,7 @@
     <form v-on:submit.prevent="updateEpisode">
       <div class="space-y-4 mb-3">
         <div class="mb-3">
-          <label
-            for="name"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Link</label
-          >
+          <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Link</label>
           <input
             type="text"
             name="title"
@@ -52,11 +48,7 @@
           />
         </div>
         <div class="mb-3">
-          <label
-            for="name"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Episode number</label
-          >
+          <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Episode number</label>
           <input
             type="number"
             name="title"
@@ -78,39 +70,36 @@
 </template>
 
 <script>
-import { reactive } from "vue";
-import episodeApi from "@/api/episode.api";
+import { reactive } from 'vue'
+import episodeApi from '@/api/episode.api'
 export default {
-  name: "UpdateEpisode",
-  props: ["episode", "filmId"],
+  name: 'UpdateEpisode',
+  props: ['episode', 'filmId'],
   setup(props, context) {
-    const closeUpdate = () => context.emit("close-update");
+    const closeUpdate = () => context.emit('close-update')
 
     // eslint-disable-next-line vue/no-setup-props-destructure
-    const episode = props.episode;
+    const episode = props.episode
     // eslint-disable-next-line vue/no-setup-props-destructure
-    const filmId = props.filmId;
+    const filmId = props.filmId
     const episodeModel = reactive({
       episodeLink: episode.episodeLink,
       episodeNumber: episode.episodeNumber,
       filmId: filmId,
-    });
+    })
     const updateEpisode = async () => {
-      const check = await episodeApi.updateEpisode(
-        episode.episodeId,
-        episodeModel
-      );
-      context.emit("update-episode", check);
-    };
+      const check = await episodeApi.updateEpisode(episode.episodeId, episodeModel)
+      context.emit('update-episode', check)
+    }
     return {
       closeUpdate,
       // eslint-disable-next-line vue/no-dupe-keys
       episode,
       updateEpisode,
       episodeModel,
-    };
+    }
   },
-};
+}
 </script>
 
 <style></style>

@@ -70,26 +70,26 @@
 </template>
 
 <script>
-import categoriesApi from "@/api/categories.api";
+import categoriesApi from '@/api/categories.api'
 export default {
-  name: "DeleteCategory",
-  props: ["category"],
+  name: 'DeleteCategory',
+  props: ['category'],
   setup(props, context) {
-    const closeDelete = () => context.emit("close-delete");
+    const closeDelete = () => context.emit('close-delete')
     // eslint-disable-next-line vue/no-setup-props-destructure
-    const cat = props.category;
+    const cat = props.category
 
     const deleteCategory = async () => {
-      const check = await categoriesApi.deleteCategory(cat.categoryId);
-      context.emit("delete-category", check);
-    };
+      const check = await categoriesApi.deleteCategory(cat.categoryId)
+      context.emit('delete-category', check)
+    }
     return {
       closeDelete,
       deleteCategory,
       cat,
-    };
+    }
   },
-};
+}
 </script>
 
 <style></style>

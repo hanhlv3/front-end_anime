@@ -37,11 +37,7 @@
     <form v-on:submit.prevent="addCategory">
       <div class="space-y-4">
         <div>
-          <label
-            for="name"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Name</label
-          >
+          <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
           <input
             type="text"
             name="title"
@@ -65,30 +61,30 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import categoriesApi from "@/api/categories.api";
+import { ref } from 'vue'
+import categoriesApi from '@/api/categories.api'
 export default {
-  name: "AddCategory",
+  name: 'AddCategory',
   setup(props, context) {
-    const closeAdd = () => context.emit("close-add");
+    const closeAdd = () => context.emit('close-add')
 
-    const categoryName = ref(null);
+    const categoryName = ref(null)
 
     const addCategory = async () => {
       const check = await categoriesApi.insertCategory({
         categoryName: categoryName.value,
-      });
+      })
 
-      context.emit("add-category", check);
-    };
+      context.emit('add-category', check)
+    }
 
     return {
       closeAdd,
       addCategory,
       categoryName,
-    };
+    }
   },
-};
+}
 </script>
 
 <style scoped></style>

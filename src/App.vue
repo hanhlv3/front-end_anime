@@ -5,27 +5,27 @@
 </template>
 
 <script>
-import { computed } from "vue";
-import { useRouter } from "vue-router";
+import { computed } from 'vue'
+import { useRouter } from 'vue-router'
 
 export default {
-  name: "App",
+  name: 'App',
   setup() {
-    const router = useRouter();
+    const router = useRouter()
 
     const currentLayout = computed(() => {
       // Determine which layout to use based on the route
-      const route = router.currentRoute.value;
-      if (route.meta.layout === "admin") return "AdminLayout";
+      const route = router.currentRoute.value
+      if (route.meta.layout === 'admin') return 'AdminLayout'
 
-      return "DefaultLayout";
-    });
+      return 'DefaultLayout'
+    })
 
     return {
       currentLayout,
-    };
+    }
   },
-};
+}
 </script>
 
 <style>
