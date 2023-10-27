@@ -7,19 +7,19 @@
 </template>
 
 <script>
-import { computed } from "vue";
-import { useStore } from "vuex";
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 export default {
-  name: "TabItemYear",
+  name: 'TabItemYear',
   setup() {
-    const store = useStore();
-    const listYear = computed(() => store.getters["film/listYear"]);
+    const store = useStore()
+    const listYear = computed(() => store.getters['film/listYear'])
 
     return {
       listYear,
-    };
+    }
   },
-};
+}
 </script>
 
 <style></style>

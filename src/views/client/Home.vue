@@ -6,45 +6,35 @@
 
     <div id="slide">
       <div class="slide-container">
-        <div class="swiper mySwiper">
-          <div class="swiper-wrapper">
-            <div id="card" class="swiper-slide">
-              <a href="">
-                <div>
-                  <img
-                    src="https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1575936123452-b67c3203c357%3Fauto%3Dformat%26fit%3Dcrop%26q%3D80%26w%3D1000%26ixlib%3Drb-4.0.3%26ixid%3DM3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%253D&tbnid=YmDohMp4T5AODM&vet=12ahUKEwiZzcKO-46CAxXi1jQHHbnmD1MQMygBegQIARBL..i&imgrefurl=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fimage&docid=ExDvm63D_wCvSM&w=1000&h=667&q=image&ved=2ahUKEwiZzcKO-46CAxXi1jQHHbnmD1MQMygBegQIARBL"
-                    style="width: 250px; height: 350px"
-                    alt=""
-                  />
-                </div>
-              </a>
-              <div class="name">Bay vien ngoc rong</div>
-              <div class="episode-lastes">7/10</div>
-            </div>
-          </div>
-        </div>
+        <swiper
+          :slidesPerView="6"
+          :spaceBetween="30"
+          :autoplay="{
+            delay: 2500,
+            disableOnInteraction: false,
+          }"
+          :loop="true"
+          :pagination="{
+            clickable: true,
+          }"
+          :modules="modules"
+          class="mySwiper"
+        >
+          <swiper-slide v-for="film in topFilms" :key="film.filmId" id="card" class="swiper-slide" style="width: 20%">
+            <a href="">
+              <div>
+                <img :src="film.img" style="width: 100%; height: 300px" alt="" />
+              </div>
+            </a>
+            <div class="name">{{ film.filmName }}</div>
+            <div class="episode-lastes">{{ `${film.currentEpisode}/${film.episodesQuantity}` }}</div>
+          </swiper-slide>
+        </swiper>
       </div>
-      <div class="swiper-pagination"></div>
     </div>
   </div>
   <!-- new phim -->
-  <div class="banner g_heading">
-    <div>Phim mới nhất</div>
-  </div>
-  <div class="movies-list">
-    <div class="movie-item">
-      <a href="">
-        <div class="episode-latest">9/10</div>
-        <div>
-          <img src="" alt="" />
-        </div>
-
-        <div class="score">{{ $score }}</div>
-
-        <div class="name-movie">7 vien ngoc rong</div>
-      </a>
-    </div>
-  </div>
+  <list-film :banner="'Phim mới nhất'" :listFilm="newFilms" />
 
   <!-- fomr login -->
   <div class="w-full max-w-xs">
@@ -91,13 +81,29 @@
 </template>
 
 <script>
-import { reactive } from 'vue'
+import { reactive, computed } from 'vue'
 import { useStore } from 'vuex'
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Autoplay, FreeMode, Pagination } from 'swiper/modules'
+
+// Import Swiper styles
+import 'swiper/css'
+
+// import 'swiper/css/free-mode'
+import 'swiper/css/pagination'
+import '@/assets/client/css/home.css'
+
+import ListFilm from '@/components/clients/ListFilm.vue'
+
 export default {
   name: 'Home',
-  setup() {
+  components: { Swiper, SwiperSlide, ListFilm },
+  async setup() {
     const store = useStore()
-
+    // await store.dispatch('film/getFilms')
+    // await store.dispatch('category/getCategories')
+    const arr = [1, 2, 3, 4, 5, 6, 7, 9, 10]
     const user = reactive({
       email: null,
       password: null,
@@ -106,9 +112,17 @@ export default {
       store.dispatch('user/login', user)
     }
 
+    // top film
+    const topFilms = computed(() => store.getters['film/topFilms'])
+    // new film
+    const newFilms = computed(() => store.getters['film/newFilms'])
     return {
       user,
       login,
+      arr,
+      modules: [Autoplay, FreeMode, Pagination],
+      topFilms,
+      newFilms,
     }
   },
 }

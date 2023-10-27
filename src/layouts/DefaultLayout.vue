@@ -1,16 +1,18 @@
 <template>
-  <div class="body">
-    <div class="main">
-      <div id="navbar">
-        <nar-bar @toggleDrop="isOpenDropDown = !isOpenDropDown" />
+  <Suspense>
+    <div class="body">
+      <div class="main">
+        <div id="navbar">
+          <nar-bar @toggleDrop="isOpenDropDown = !isOpenDropDown" />
+        </div>
+        <div v-if="isOpenDropDown" class="drop_down" id="drop"><drop-down /></div>
+        <div id="content">
+          <router-view></router-view>
+        </div>
+        <div class="footer"></div>
       </div>
-      <div v-if="isOpenDropDown" class="drop_down" id="drop"><drop-down /></div>
-      <div id="content">
-        <router-view></router-view>
-      </div>
-      <div class="footer"></div>
     </div>
-  </div>
+  </Suspense>
 </template>
 
 <script>
@@ -24,12 +26,13 @@ export default {
   components: { NarBar, DropDown },
   setup() {
     const store = useStore()
-    store.dispatch('category/getCategories')
     store.dispatch('film/getFilms')
+    store.dispatch('category/getCategories')
     const isOpenDropDown = ref(false)
 
     return {
       isOpenDropDown,
+      store,
     }
   },
 }

@@ -7,19 +7,19 @@
 </template>
 
 <script>
-import { computed } from "vue";
-import { useStore } from "vuex";
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 
 export default {
-  name: "TabItemCategory",
+  name: 'TabItemCategory',
   setup() {
-    const store = useStore();
-    const categories = computed(() => store.state.category.categories);
+    const store = useStore()
+    const categories = computed(() => store.state.category.categories)
     return {
       categories,
-    };
+    }
   },
-};
+}
 </script>
 
 <style></style>

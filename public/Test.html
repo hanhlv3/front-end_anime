@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Swiper demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+
+    <!-- Demo styles -->
+    <style>
+      html,
+      body {
+        position: relative;
+        height: 100vh;
+      }
+      #slide {
+        margin-bottom: 30px;
+        padding: 10px;
+        background-color: black;
+        width: 100%;
+        border: 1px solid black;
+        border-radius: 6px;
+      }
+      #slide .slide-container {
+        width: 100%;
+        background-color: #000000;
+        padding: 5px;
+      }
+      #slide .slide-container > div {
+        overflow: hidden;
+        width: 100%;
+        background-color: #000000;
+      }
+
+      #slide {
+        margin-bottom: 30px;
+        padding: 10px;
+        background-color: black;
+        width: 100%;
+        border: 1px solid black;
+        border-radius: 6px;
+      }
+      #slide .slide-container {
+        width: 100%;
+        background-color: #000000;
+        padding: 5px;
+      }
+      #slide .slide-container > div {
+        overflow: hidden;
+        width: 100%;
+      }
+
+      #card {
+        display: inline-block;
+        position: relative;
+        transition: all 0.3s;
+        max-width: 223px;
+      }
+      #card:hover {
+        background-color: black;
+        opacity: 0.7;
+      }
+      #card + div {
+        width: 100%;
+        display: inline-block;
+      }
+      #card .name {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        padding: 10px;
+        overflow: hidden;
+        font-weight: 700;
+        font-size: 20px;
+      }
+      #card .episode-lastes {
+        position: absolute;
+        top: 3px;
+        border-radius: 10%;
+        padding: 5px 10px;
+        left: 3px;
+        background: #883636;
+        font-weight: 700;
+        color: white;
+        font-size: 15px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- swiper슬라이더 메인컨테이너 -->
+    <div id="slide">
+      <div class="swiper-container">
+        <!-- 보여지는 영역 -->
+        <div class="swiper-wrapper">
+          <!-- div class="swiper-slide" 를 추가하면된다 -->
+          <div
+            v-for="item in arr"
+            :key="item"
+            id="card"
+            class="swiper-slide"
+            style="width: 341.5px; margin-right: 50px"
+          >
+            <a href="">
+              <div>
+                <img
+                  src="http://localhost:8000/uploads/avatar_film/3628.jpg"
+                  style="width: 250px; height: 350px"
+                  alt=""
+                />
+              </div>
+            </a>
+            <div class="name">name</div>
+            <div class="episode-lastes">1/10</div>
+          </div>
+          <div
+            v-for="item in arr"
+            :key="item"
+            id="card"
+            class="swiper-slide"
+            style="width: 341.5px; margin-right: 50px"
+          >
+            <a href="">
+              <div>
+                <img
+                  src="http://localhost:8000/uploads/avatar_film/3628.jpg"
+                  style="width: 250px; height: 350px"
+                  alt=""
+                />
+              </div>
+            </a>
+            <div class="name">name</div>
+            <div class="episode-lastes">1/10</div>
+          </div>
+          <div
+            v-for="item in arr"
+            :key="item"
+            id="card"
+            class="swiper-slide"
+            style="width: 341.5px; margin-right: 50px"
+          >
+            <a href="">
+              <div>
+                <img
+                  src="http://localhost:8000/uploads/avatar_film/3628.jpg"
+                  style="width: 250px; height: 350px"
+                  alt=""
+                />
+              </div>
+            </a>
+            <div class="name">name</div>
+            <div class="episode-lastes">1/10</div>
+          </div>
+          <div
+            v-for="item in arr"
+            :key="item"
+            id="card"
+            class="swiper-slide"
+            style="width: 341.5px; margin-right: 50px"
+          >
+            <a href="">
+              <div>
+                <img
+                  src="http://localhost:8000/uploads/avatar_film/3628.jpg"
+                  style="width: 250px; height: 350px"
+                  alt=""
+                />
+              </div>
+            </a>
+            <div class="name">name</div>
+            <div class="episode-lastes">1/10</div>
+          </div>
+          <div
+            v-for="item in arr"
+            :key="item"
+            id="card"
+            class="swiper-slide"
+            style="width: 341.5px; margin-right: 50px"
+          >
+            <a href="">
+              <div>
+                <img
+                  src="http://localhost:8000/uploads/avatar_film/3628.jpg"
+                  style="width: 250px; height: 350px"
+                  alt=""
+                />
+              </div>
+            </a>
+            <div class="name">name</div>
+            <div class="episode-lastes">1/10</div>
+          </div>
+          <div
+            v-for="item in arr"
+            :key="item"
+            id="card"
+            class="swiper-slide"
+            style="width: 341.5px; margin-right: 50px"
+          >
+            <a href="">
+              <div>
+                <img
+                  src="http://localhost:8000/uploads/avatar_film/3628.jpg"
+                  style="width: 250px; height: 350px"
+                  alt=""
+                />
+              </div>
+            </a>
+            <div class="name">name</div>
+            <div class="episode-lastes">1/10</div>
+          </div>
+        </div>
+        <!-- 페이징 버튼 처리 -->
+        <div class="swiper-pagination"></div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      const swiper = new Swiper('.swiper-container', {
+        //기본 셋팅
+        //방향 셋팅 vertical 수직, horizontal 수평 설정이 없으면 수평
+        direction: 'horizontal',
+        //한번에 보여지는 페이지 숫자
+        slidesPerView: 3,
+        //페이지와 페이지 사이의 간격
+        spaceBetween: 30,
+        //드레그 기능 true 사용가능 false 사용불가
+        debugger: true,
+        //마우스 휠기능 true 사용가능 false 사용불가
+        mousewheel: true,
+        //반복 기능 true 사용가능 false 사용불가
+        loop: true,
+        //선택된 슬라이드를 중심으로 true 사용가능 false 사용불가 djqt
+        centeredSlides: true,
+        // 페이지 전환효과 slidesPerView효과와 같이 사용 불가
+        // effect: 'fade',
+
+        //자동 스크를링
+        autoplay: {
+          //시간 1000 이 1초
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+
+        //페이징
+        pagination: {
+          //페이지 기능
+          el: '.swiper-pagination',
+          //클릭 가능여부
+          clickable: true,
+        },
+      })
+    </script>
+  </body>
+</html>

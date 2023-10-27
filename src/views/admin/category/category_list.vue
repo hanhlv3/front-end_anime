@@ -409,7 +409,6 @@ export default {
 
     const categories = computed(() => store.state.category.categories)
     const totalPage = computed(() => Math.ceil(categories.value.length / categoriesPerPage.value))
-    console.log(totalPage.value, 'out')
 
     const paginatedCategories = computed(() => {
       const startIndex = (currentPage.value - 1) * categoriesPerPage.value
