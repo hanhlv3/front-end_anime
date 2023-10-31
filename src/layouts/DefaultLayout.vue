@@ -21,6 +21,8 @@ import { useStore } from 'vuex'
 
 import NarBar from '@/components/clients/NarBar.vue'
 import DropDown from '@/components/clients/DropDown.vue'
+
+import '@/assets/client/css/layouts.css'
 export default {
   name: 'DefaultLayout',
   components: { NarBar, DropDown },

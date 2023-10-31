@@ -82,10 +82,9 @@
 }
 
 .content_film{
-    margin-top: 20px;
-    height: 600px;
-    background-color:#ff5252ed;
+    margin-top: 30px;
     z-index: 1;
+    height: 600px;;
 }
 /* button settings fim */
 .pd-7{

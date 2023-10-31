@@ -1,6 +1,9 @@
+/* eslint-disable no-shadow-restricted-names */
+/* eslint-disable no-prototype-builtins */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 ;(function (window, document, undefined) {
   'use strict'
-
   ;(function e(t, n, r) {
     function s(o, u) {
       if (!n[o]) {

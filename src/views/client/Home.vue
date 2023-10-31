@@ -21,11 +21,11 @@
           class="mySwiper"
         >
           <swiper-slide v-for="film in topFilms" :key="film.filmId" id="card" class="swiper-slide" style="width: 20%">
-            <a href="">
+            <router-link :to="{ name: 'DescFilm', params: { filmId: film.filmId } }">
               <div>
                 <img :src="film.img" style="width: 100%; height: 300px" alt="" />
               </div>
-            </a>
+            </router-link>
             <div class="name">{{ film.filmName }}</div>
             <div class="episode-lastes">{{ `${film.currentEpisode}/${film.episodesQuantity}` }}</div>
           </swiper-slide>
@@ -92,7 +92,6 @@ import 'swiper/css'
 
 // import 'swiper/css/free-mode'
 import 'swiper/css/pagination'
-import '@/assets/client/css/home.css'
 
 import ListFilm from '@/components/clients/ListFilm.vue'
 

@@ -1,8 +1,12 @@
 <template>
   <div class="tab-item" id="category">
-    <a v-for="cat in categories" :key="cat.categoryId" href="">
+    <router-link
+      v-for="cat in categories"
+      :key="cat.categoryId"
+      :to="{ name: 'Client-Category', params: { categoryName: cat.categoryName } }"
+    >
       {{ cat.categoryName }}
-    </a>
+    </router-link>
   </div>
 </template>
 

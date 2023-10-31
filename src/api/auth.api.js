@@ -1,9 +1,28 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
-const login = async (user) => {
+const createData = (user, image) => {
+  const formData = new FormData()
+  formData.append('user', JSON.stringify(user))
+  if (image != null) formData.append('image', image)
+  return formData
+}
+
+const register = async (user, image) => {
+  // obj data
+  delete user.confirmPassword
+  const data = createData(user, image)
+  console.log(data)
+  const response = await axios.post('http://localhost:8000/api/v1/register', data, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+  })
+  if (response.status === 200) return true
+  else return false
+}
+
+const login = async (userRequest) => {
   try {
-    const response = await axios.post('http://localhost:8000/api/v1/login', user)
+    const response = await axios.post('http://localhost:8000/api/v1/login', userRequest)
 
     if (response.status === 200) {
       // login successfully
@@ -19,6 +38,26 @@ const login = async (user) => {
   }
 }
 
+const getUser = async () => {
+  try {
+    const token = Cookies.get('token')
+    console.log('token ', token)
+    const response = await axios.get('http://localhost:8000/api/v1/user', {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    })
+
+    if (response.status != 200) return null
+
+    return response.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export default {
   login,
+  register,
+  getUser,
 }

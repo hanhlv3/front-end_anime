@@ -1,8 +1,8 @@
 <template>
   <div class="tab-item" id="category">
-    <a v-for="year in listYear" :key="year" href="">
+    <router-link v-for="year in listYear" :key="year" :to="{ name: 'Client-Year', params: { year: year } }">
       {{ year }}
-    </a>
+    </router-link>
   </div>
 </template>
 

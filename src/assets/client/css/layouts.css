@@ -199,7 +199,6 @@ a#logo-home {
     color: white;
 }
 #navbar .infor-account {
-    display: none;
     flex-direction: column;
     position: absolute;
     z-index: 10;
@@ -207,7 +206,7 @@ a#logo-home {
     background-color: #4d4d4d;
     border: solid 1px #404040;
     box-shadow: 0 0 2px #000000;
-    margin-top: 5px;
+    margin-top: 0px;
     padding: 5px;
 }
 

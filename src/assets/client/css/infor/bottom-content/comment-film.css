@@ -38,6 +38,7 @@
 
 .comment_film .comment_head .comment_nav select option {
     margin: 0;
+    background-color: rgb(77, 74, 74);
 }
 
 .comment_film .comment_container {
@@ -140,13 +141,14 @@
     font-size: var(--fontSizeMini);
     color: #7d7d7d;
 }
-
+.c_comment_content {
+  margin: 6px 0px !important;
+}
 .login-comment a {
     display: inline-block;
     color: #cac9c9;
     background-color: red;
     padding: 5px 10px;
-    margin-left: 42%;
     text-align: center;
     text-decoration: none;
     border-radius: 5px;
@@ -154,7 +156,7 @@
 
 }
 .login-comment a:hover {
-    opacity: 0.3; 
+    opacity: 0.7; 
 }
 
 .comment_head.border-none {
@@ -180,7 +182,7 @@
     z-index: 9; 
     box-shadow: 1px 1px 27px 1px rgb(193 193 193 / 75%);
     border-radius: 10px;
-    padding: 10px; 
+    padding: 21px; 
     transition: 0.3s all;
 }
 .form-evaluate.un_active {
@@ -196,10 +198,6 @@
     justify-content: space-between;
     font-size: 28px;
     font-weight: bold;
-}
-.head-evaluate #exits {
-    background-color: firebrick ; 
-    
 }
 .head-evaluate #exits i {
     color: #cac9c9 ; 
@@ -301,6 +299,9 @@
     border: solid 1px var(--themeColor);
     text-shadow: var(--textShadow);
     box-shadow: var(--boxShadow) inset;
+}
+.c_comment_body {
+  text-align: start;
 }
 
 .c_comment_body div p {

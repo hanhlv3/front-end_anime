@@ -1,3 +1,7 @@
+/* eslint-disable no-func-assign */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-unsafe-finally */
+/* eslint-disable no-undef */
 window.FontAwesomeKitConfig = {
   asyncLoading: { enabled: false },
   autoA11y: { enabled: true },

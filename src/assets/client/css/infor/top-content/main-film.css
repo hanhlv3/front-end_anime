@@ -109,6 +109,7 @@
     margin: auto;
     font-size: var(--fontSize);
     color: var(--themeColor);
+    text-align: start;
 }
 .detail_film .detail .detail_list table tr {
     border-bottom: solid 1px rgb(121, 121, 121);

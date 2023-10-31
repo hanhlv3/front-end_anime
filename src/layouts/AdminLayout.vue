@@ -335,6 +335,8 @@
 import { ref, watchEffect } from 'vue'
 import { useRouter } from 'vue-router'
 
+import '@/assets/client/css/home.css'
+
 export default {
   name: 'AdminLayout',
   setup() {

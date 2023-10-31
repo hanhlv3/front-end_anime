@@ -1,3 +1,7 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-useless-escape */
+/* eslint-disable valid-typeof */
+/* eslint-disable no-unused-vars */
 const EmojiPicker = function (options) {
   this.options = options
   this.trigger = this.options.trigger.map((item) => item.selector)

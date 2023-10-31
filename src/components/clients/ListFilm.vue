@@ -4,7 +4,7 @@
   </div>
   <div class="movies-list">
     <div v-for="film in paginatedFilm" :key="film.filmId" class="movie-item">
-      <a href="">
+      <router-link :to="{ name: 'DescFilm', params: { filmId: film.filmId } }">
         <div class="episode-latest">{{ `${film.currentEpisode}/${film.episodesQuantity}` }}</div>
         <div>
           <img :src="film.img" alt="" />
@@ -13,10 +13,10 @@
         <div class="score">{{ film.score == -1.0 ? 'Nan' : film.film.score }}</div>
 
         <div class="name-movie">{{ film.filmName }}</div>
-      </a>
+      </router-link>
     </div>
   </div>
-  <div v-if="totalPage != 1" class="pagination">
+  <div v-if="!(totalPage == 0 || totalPage == 1)" class="pagination">
     <div>
       {{ currentPage * filmPerPage - filmPerPage + 1 }} -
       {{ totalPage == currentPage ? listFilm.length : currentPage * filmPerPage }} of {{ listFilm.length }}
@@ -37,9 +37,11 @@ export default {
     const banner = computed(() => props.banner)
     const listFilm = computed(() => props.listFilm)
     // content new film
-    const filmPerPage = ref(1)
+    const filmPerPage = ref(2)
     const currentPage = ref(1)
     const totalPage = computed(() => Math.ceil(listFilm.value.length / filmPerPage.value))
+    console.log('page', totalPage.value)
+    console.log(listFilm.value)
     const paginatedFilm = computed(() => {
       const startIndex = (currentPage.value - 1) * filmPerPage.value
       const endIndex = startIndex + filmPerPage.value

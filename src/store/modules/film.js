@@ -33,22 +33,34 @@ const getters = {
     }
     return listFilms
   },
-  getFilmByCategory(state, categoryId) {
-    let listFilms = state.films.filter((film) => {
-      for (const cat in film.categories) {
-        if (cat.categoryId === categoryId) return true
+  getFilmByCategory: (state) => (categoryName) => {
+    console.log('category name', categoryName)
+    const listFilms = state.films.filter((film) => {
+      for (const cat of film.categories) {
+        if (cat.categoryName === categoryName) return true
       }
       return false
     })
     return listFilms
   },
-  getFilmByYear(state, year) {
+  getFilmByYear: (state) => (year) => {
+    console.log(year)
     let listFilms = state.films.filter((film) => {
       const date = new Date(film.releaseDate)
       const filmYear = date.getFullYear()
       return filmYear === year
     })
     return listFilms
+  },
+  getFilmByFilmId: (state) => (filmId) => {
+    let filmResult
+    for (let film of state.films) {
+      if (film.filmId == filmId) {
+        filmResult = film
+        break
+      }
+    }
+    return filmResult
   },
 }
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 document.querySelector('.detail_list table').style.display = 'table'
 document.querySelector('.detail_list .content_film').style.display = 'none'
 

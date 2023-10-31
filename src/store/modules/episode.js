@@ -9,7 +9,7 @@ const state = () => ({
 const getters = {
   episodesIncrement: (state) => {
     console.log(state.episodes)
-    return state.episodes.sort((a, b) => b.episodeNumber - a.episodeNumber)
+    return state.episodes.sort((a, b) => a.episodeNumber - b.episodeNumber)
   },
 }
 
