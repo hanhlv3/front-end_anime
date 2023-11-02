@@ -5,7 +5,7 @@
     </div>
     <div class="comment_head">
       <!-- {{-- Put data here --}} -->
-      <p class="comment_title" id="total">Bình luận (1)</p>
+      <p class="comment_title" id="total">Bình luận ({{ commentsList.length }})</p>
       <div class="comment_nav">
         <!-- {{-- Put data here --}} -->
         <select name="" id="">
@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="comment_container">
-      <form v-if="user != null">
+      <form @submit.prevent="comment" v-if="user != null">
         <textarea
           name="comment"
           id="comment"
@@ -97,25 +97,6 @@
             </div>
           </form>
         </li>
-
-        <!-- <script>
-                            new EmojiPicker({
-                                trigger: [{
-                                        selector: '#binh_luan',
-                                        insertInto: '#comment' // '.selector' can be used without array
-                                    },
-                                    @foreach ($list_cmt as $comment)
-                                        {
-                                            selector: "#btn_{{ $comment->comment_id }}",
-                                            insertInto: "#comment_{{ $comment->comment_id }} " // '.selector' can be used without array
-                                        },
-                                    @endforeach
-
-                                ],
-                                closeButton: true,
-                                //specialButtons: green
-                            });
-                        </script> -->
       </ul>
       <div class="bt_load_cm" id="load_cm">
         <button href="#" class="fw-600" id="btn_load">Tải thêm bình luận</button>
@@ -128,25 +109,48 @@
 import { computed, ref } from 'vue'
 import { useStore } from 'vuex'
 import EmojiPicker from 'vue3-emoji-picker'
+import filmsApi from '@/api/films.api'
 
 import 'vue3-emoji-picker/css'
+
 export default {
   name: 'Comment',
   components: { EmojiPicker },
-  props: ['parentComponent'],
-  setup(props, context) {
+  props: ['parentComponent', 'filmId'],
+  async setup(props, context) {
     const store = useStore()
     const user = computed(() => store.state.user.user)
     // eslint-disable-next-line vue/no-setup-props-destructure
     const parentComponent = props.parentComponent
 
-    const showEvaluate = () => context.emit('showEvaluate')
+    // eslint-disable-next-line vue/no-setup-props-destructure, no-unused-vars
+    const filmId = props.filmId
+
+    await store.dispatch('comment/getComments', filmId)
+
+    const commentsList = store.state.comment.comments
+
+    function showEvaluate() {
+      return context.emit('showEvaluate')
+    }
     const showEmojiPicker = ref(false)
     const contentCommnent = ref('')
 
     const onSelectEmoji = (emoji) => {
       console.log(emoji)
       contentCommnent.value += emoji.i
+    }
+
+    const comment = () => {
+      const data = {
+        commentContent: contentCommnent.value,
+        filmCmtParentId: 8,
+      }
+      console.log(filmId)
+      const result = filmsApi.commentFilm(data, +filmId)
+      if (result) {
+        // update comment
+      }
     }
 
     return {
@@ -157,6 +161,8 @@ export default {
       showEmojiPicker,
       contentCommnent,
       onSelectEmoji,
+      comment,
+      commentsList,
     }
   },
 }

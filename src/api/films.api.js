@@ -51,8 +51,7 @@ const deleteFilm = async (filmId) => {
         Authorization: `Bearer ${token}`,
       },
     })
-    if (response.status === 200) return true
-    else return false
+    return response.status === 200
   } catch (error) {
     console.log(error)
   }
@@ -68,9 +67,51 @@ const getAllFilms = async () => {
   }
 }
 
+const evaluateFilm = async (data) => {
+  try {
+    const token = Cookies.get('token')
+    const response = await axios.post('http://localhost:8000/api/v1/film/evaluate', data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+
+    return response.status == 200
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const commentFilm = async (data, filmId) => {
+  try {
+    const token = Cookies.get('token')
+    const response = await axios.post('http://localhost:8000/api/v1/film/comment/' + filmId, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    return response.status == 200
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const getCommentOfFilm = async (filmId) => {
+  try {
+    const response = await axios.get('http://localhost:8000/api/v1/public/film/comment/' + filmId)
+    if (response.status == 200) return response.data
+    return null
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export default {
   getAllFilms,
   insertFilm,
   updateFilm,
   deleteFilm,
+  evaluateFilm,
+  commentFilm,
+  getCommentOfFilm,
 }

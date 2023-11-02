@@ -300,6 +300,9 @@
     text-shadow: var(--textShadow);
     box-shadow: var(--boxShadow) inset;
 }
+#btn_cmt:hover {
+  opacity: 0.7;
+}
 .c_comment_body {
   text-align: start;
 }

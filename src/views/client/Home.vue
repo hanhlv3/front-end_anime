@@ -100,8 +100,8 @@ export default {
   components: { Swiper, SwiperSlide, ListFilm },
   async setup() {
     const store = useStore()
-    // await store.dispatch('film/getFilms')
-    // await store.dispatch('category/getCategories')
+    await store.dispatch('film/getFilms')
+    await store.dispatch('category/getCategories')
     const arr = [1, 2, 3, 4, 5, 6, 7, 9, 10]
     const user = reactive({
       email: null,

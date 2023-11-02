@@ -8,8 +8,27 @@ const state = () => ({
 // getters
 const getters = {
   episodesIncrement: (state) => {
-    console.log(state.episodes)
     return state.episodes.sort((a, b) => a.episodeNumber - b.episodeNumber)
+  },
+  getEpisodeById: (state) => (episodeId) => {
+    let episode = null
+    for (let item of state.episodes) {
+      if (item.episodeId === episodeId) {
+        episode = item
+        break
+      }
+    }
+    return episode
+  },
+  getEpisodeByNumber: (state) => (episodeNumber) => {
+    let episode = null
+    for (let item of state.episodes) {
+      if (item.episodeNumber === episodeNumber) {
+        episode = item
+        break
+      }
+    }
+    return episode
   },
 }
 

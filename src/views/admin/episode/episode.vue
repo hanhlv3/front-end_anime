@@ -180,7 +180,7 @@
                   {{ episodes.indexOf(episode) + 1 }}
                 </td>
                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  {{ episode.episodeLink }}
+                  <span class="link">{{ episode.episodeLink }}</span>
                 </td>
                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   {{ episode.episodeNumber }}
@@ -543,5 +543,12 @@ export default {
   position: absolute;
   top: 35%;
   left: 50%;
+}
+
+.link {
+  display: block;
+  overflow: hidden;
+  width: 200px;
+  text-overflow: ellipsis;
 }
 </style>

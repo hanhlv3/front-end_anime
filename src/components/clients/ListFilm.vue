@@ -10,7 +10,7 @@
           <img :src="film.img" alt="" />
         </div>
 
-        <div class="score">{{ film.score == -1.0 ? 'Nan' : film.film.score }}</div>
+        <div class="score">{{ film.score == -1.0 ? 'Nan' : film.score }}</div>
 
         <div class="name-movie">{{ film.filmName }}</div>
       </router-link>

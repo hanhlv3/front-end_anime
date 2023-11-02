@@ -167,6 +167,7 @@ a#logo-home {
 #content {
     background-color: #585858;
     padding: 20px;
+    min-height: calc(100vh - 93px);
 }
 
     .search-bar {
