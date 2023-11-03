@@ -94,15 +94,13 @@
     padding: 10px 0;
 }
 
-.comment_list li {
+.comment_list  .flex-custome{
     display: flex;
     align-items: center;
-    margin-top: 10px;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: #2d2d2d;
+    margin-top: 5px;
+    border-radius: 10px; 
 }
-.comment_list li .c_comment_head {
+.comment_list .c_comment_head {
     width: 70px;
     height: 70px;
     margin-right: 10px;
@@ -110,7 +108,7 @@
     text-align: center;
     line-height: 70px;
 }
-.comment_list li .c_comment_head a {
+.comment_list .c_comment_head a {
     display: block;
     width: 100%;
     height: 100%;
@@ -321,27 +319,26 @@
     border-radius: 5px
 }
 
-.comment_list li {
+.comment_list  .flex-custome {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 
 }
-.comment_list li .parent_comment {
+.comment_list .parent_comment {
     width: 100%;
     border-radius: 5px;
     padding: 10px 5px ; 
     background-color: #000;
+    margin-top: 20px;
    
 }
-.comment_list li .parent_comment, .sub_cmt {
-    display: flex;
-    margin-top: 5px; 
-    
+.comment_list .parent_comment, .sub_cmt {
+    display: flex;    
 }
-.comment_list li .sub_cmt {
-    margin-left: 5px ; 
-    width: 95%;
+.comment_list .sub_cmt {
+    margin-left: 50px ; 
+    width: 97%;
     border-radius: 5px;
     padding: 10px 5px ; 
     background-color: #000;

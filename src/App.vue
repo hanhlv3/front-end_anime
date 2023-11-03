@@ -7,10 +7,18 @@
 <script>
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
+import Cookies from 'js-cookie'
 
 export default {
   name: 'App',
   setup() {
+    const token = Cookies.get('token')
+    const store = useStore()
+    if (token != null) {
+      // update user
+      store.dispatch('user/setUser')
+    }
     const router = useRouter()
 
     const currentLayout = computed(() => {

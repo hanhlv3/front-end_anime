@@ -51,7 +51,7 @@
         </div>
       </div>
 
-      <comment :parentComponent="'DETAIL'" />
+      <comment :filmId="filmId" :parentComponent="'DETAIL'" />
     </div>
   </div>
 </template>
@@ -107,6 +107,7 @@ export default {
       film,
       episodeList,
       nextEpisode,
+      filmId,
     }
   },
 }

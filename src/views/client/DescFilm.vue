@@ -149,20 +149,11 @@ export default {
       console.log(result)
     }
 
-    const comment = async (contentComment, filmCmtParentId) => {
-      const data = {
-        commentContent: contentComment,
-        filmCmtParentId: filmCmtParentId,
-      }
-      console.log(data)
-    }
-
     return {
       film,
       episodeList,
       isShowEvaluate,
       evaluate,
-      comment,
       filmId,
     }
   },

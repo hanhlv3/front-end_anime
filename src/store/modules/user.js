@@ -19,6 +19,10 @@ const actions = {
       commit('setUser', user)
     }
   },
+  async setUser({ commit }) {
+    const user = await auth.getUser()
+    commit('setUser', user)
+  },
 
   async logout({ commit }) {
     Cookies.remove('token')

@@ -5,7 +5,7 @@
     </div>
     <div class="comment_head">
       <!-- {{-- Put data here --}} -->
-      <p class="comment_title" id="total">Bình luận ({{ commentsList.length }})</p>
+      <p class="comment_title" id="total">Bình luận ({{ numberComment }})</p>
       <div class="comment_nav">
         <!-- {{-- Put data here --}} -->
         <select name="" id="">
@@ -38,65 +38,13 @@
 
       <ul class="comment_list">
         <!-- {{-- Put data here --}} -->
-
-        <li>
-          <div class="parent_comment">
-            <div class="c_comment_head">
-              <a href="#">
-                <img src="" alt="" />
-              </a>
-            </div>
-            <div>
-              <div class="c_comment_body">
-                <a class="c_comment_user" href="#">h</a>
-                <p class="c_comment_content">h</p>
-                <div>
-                  <p><button href="#" class="answer" data-id="g">Trả lời</button></p>
-                  <p class="c_comment_time">12=03-2102</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="div_b">
-            <div class="sub_cmt">
-              <div class="c_comment_head">
-                <a href="#">
-                  <img src="{{ $sub->avt }}" alt="" />
-                </a>
-              </div>
-              <div>
-                <div class="c_comment_body">
-                  <a class="c_comment_user" href="#">h</a>
-                  <p class="c_comment_content">conteng</p>
-                  <div>
-                    <p class="c_comment_time">12-01-2002</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <form action="#" method="GET" class="un_active" id="form_answer_{}}">
-            <textarea
-              name="comment_{{ $comment->comment_id }}"
-              id="comment_{{ $comment->comment_id }}"
-              class="comment_a"
-              cols="10"
-              rows="5"
-            ></textarea>
-            <div class="div_comment">
-              <i class="ti-comments-smiley" id="btn_{{ $comment->comment_id }}"></i>
-              <input
-                type="submit"
-                value="Bình luận"
-                class="btn_submit"
-                id="btn_submit_{{ $comment->comment_id }}"
-                data-id="{{ $comment->comment_id }}"
-              />
-            </div>
-          </form>
-        </li>
+        <comment-tree
+          v-for="comment in commentsList"
+          :key="comment.filmCmtId"
+          @updateComment="updateComment"
+          :comment="comment"
+          :filmId="filmId"
+        />
       </ul>
       <div class="bt_load_cm" id="load_cm">
         <button href="#" class="fw-600" id="btn_load">Tải thêm bình luận</button>
@@ -111,11 +59,13 @@ import { useStore } from 'vuex'
 import EmojiPicker from 'vue3-emoji-picker'
 import filmsApi from '@/api/films.api'
 
+import CommentTree from './CommentTree.vue'
+
 import 'vue3-emoji-picker/css'
 
 export default {
   name: 'Comment',
-  components: { EmojiPicker },
+  components: { EmojiPicker, CommentTree },
   props: ['parentComponent', 'filmId'],
   async setup(props, context) {
     const store = useStore()
@@ -128,7 +78,8 @@ export default {
 
     await store.dispatch('comment/getComments', filmId)
 
-    const commentsList = store.state.comment.comments
+    const commentsList = computed(() => store.state.comment.comments)
+    const numberComment = computed(() => store.state.comment.numberComments)
 
     function showEvaluate() {
       return context.emit('showEvaluate')
@@ -137,20 +88,24 @@ export default {
     const contentCommnent = ref('')
 
     const onSelectEmoji = (emoji) => {
-      console.log(emoji)
       contentCommnent.value += emoji.i
     }
 
-    const comment = () => {
+    const comment = async () => {
       const data = {
         commentContent: contentCommnent.value,
-        filmCmtParentId: 8,
+        filmCmtParentId: null,
       }
-      console.log(filmId)
-      const result = filmsApi.commentFilm(data, +filmId)
+      const result = await filmsApi.commentFilm(data, +filmId)
       if (result) {
         // update comment
+        await store.dispatch('comment/getComments', filmId)
       }
+      contentCommnent.value = ''
+    }
+
+    const updateComment = async () => {
+      window.location.reload()
     }
 
     return {
@@ -163,6 +118,8 @@ export default {
       onSelectEmoji,
       comment,
       commentsList,
+      numberComment,
+      updateComment,
     }
   },
 }
