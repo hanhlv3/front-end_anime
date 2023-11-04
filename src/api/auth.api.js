@@ -41,7 +41,6 @@ const login = async (userRequest) => {
 const getUser = async () => {
   try {
     const token = Cookies.get('token')
-    console.log('token ', token)
     const response = await axios.get('http://localhost:8000/api/v1/user', {
       headers: {
         Authorization: 'Bearer ' + token,

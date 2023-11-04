@@ -53,5 +53,19 @@ export const client_router = {
       component: () => import('@/views/client/Register.vue'),
       meta: { label: 'default' },
     },
+    {
+      name: 'Store',
+      path: '/store',
+
+      component: () => import('@/views/client/Store.vue'),
+      meta: { label: 'default' },
+    },
+    {
+      name: 'InforAccount',
+      path: '/infor-account',
+
+      component: () => import('@/views/client/InforAccount.vue'),
+      meta: { label: 'default' },
+    },
   ],
 }

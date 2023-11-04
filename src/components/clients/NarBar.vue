@@ -14,10 +14,12 @@
     </div>
     <div>
       <div class="icon">
-        <a href="" @click.prevent="toggleDrop" class="g_nav_btn p-lg-4 p-md-3 p-sm-2" id="bu"
-          ><i class="ti-menu"></i
-        ></a>
-        <a href="{{ route('store.index') }}" class="g_nav_btn p-lg-4 p-md-3 p-sm-2"><i class="ti-bookmark-alt"></i></a>
+        <a @click.prevent="toggleDrop" class="g_nav_btn p-lg-4 p-md-3 p-sm-2" id="bu">
+          <i class="ti-menu"></i>
+        </a>
+        <router-link :to="{ name: 'Store' }" class="g_nav_btn p-lg-4 p-md-3 p-sm-2">
+          <i class="ti-bookmark-alt"></i>
+        </router-link>
         <router-link v-if="user == null" :to="{ name: 'Login' }" class="g_nav_btn p-lg-4 p-md-3 p-sm-2" href="#">
           <i class="ti-shift-right"></i>
         </router-link>
@@ -45,7 +47,7 @@
           <img :src="user.avatar" alt="Images avatar of user" />
           <div>{{ user.realUserName }}</div>
         </div>
-        <a href="">Thông tin tài khoản</a>
+        <router-link :to="{ name: 'InforAccount' }">Thông tin tài khoản</router-link>
         <router-link v-if="user.role == 'ADMIN'" :to="{ name: 'HomeAdmin' }">Trang quản trị</router-link>
         <a @click.prevent="logout">Đăng xuất</a>
       </div>
@@ -60,7 +62,6 @@ export default {
   setup(props, context) {
     const store = useStore()
     const user = computed(() => {
-      console.log(store.state.user.user)
       return store.state.user.user
     })
 

@@ -37,7 +37,7 @@ export default {
     const banner = computed(() => props.banner)
     const listFilm = computed(() => props.listFilm)
     // content new film
-    const filmPerPage = ref(2)
+    const filmPerPage = ref(15)
     const currentPage = ref(1)
     const totalPage = computed(() => Math.ceil(listFilm.value.length / filmPerPage.value))
     console.log('page', totalPage.value)

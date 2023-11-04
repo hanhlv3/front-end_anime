@@ -18,6 +18,7 @@ export default {
     if (token != null) {
       // update user
       store.dispatch('user/setUser')
+      store.dispatch('filmStore/getFilmStores')
     }
     const router = useRouter()
 

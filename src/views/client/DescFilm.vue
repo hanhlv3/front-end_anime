@@ -46,7 +46,8 @@
               <form action="" method="post">
                 <button id="infor-btn-unfollow"></button>
               </form>
-              <a class="btn_remember" href="#">Bỏ lưu</a>
+              <a v-if="filmStore" class="btn_remember" @click.prevent="unSaveFilm">Bỏ lưu</a>
+              <a v-else class="btn_remember" @click.prevent="saveFilm">Lưu phim</a>
             </div>
           </div>
         </div>
@@ -132,6 +133,8 @@ export default {
 
     const film = computed(() => store.getters['film/getFilmByFilmId'](filmId.value))
     const episodeList = computed(() => store.getters['episode/episodesIncrement'])
+    const filmStore = computed(() => store.getters['filmStore/checkFilmInStore'](filmId.value))
+    const user = computed(() => store.state.user.user)
 
     const evaluate = async (value) => {
       console.log(value)
@@ -146,7 +149,24 @@ export default {
         showAlert('Thông báo', 'Cảm ơn bạn đã đánh giá', 'success')
       }
       isShowEvaluate.value = false
-      console.log(result)
+    }
+
+    const saveFilm = async () => {
+      const { showAlert } = useSweetAlert()
+      if (user.value == null) {
+        showAlert('Thông báo', 'Vui lòng đăng nhập', 'warning')
+      } else {
+        await store.dispatch('filmStore/saveFilm', filmId.value)
+        await store.dispatch('filmStore/getFilmStores')
+        showAlert('Thông báo', 'Phim đã được lưu', 'success')
+      }
+    }
+
+    const unSaveFilm = async () => {
+      const { showAlert } = useSweetAlert()
+      await store.dispatch('filmStore/deleteFilmStore', filmStore.value.filmStoreId)
+      await store.dispatch('filmStore/getFilmStores')
+      showAlert('Thông báo', 'Phim đã được bỏ lưu', 'success')
     }
 
     return {
@@ -155,9 +175,16 @@ export default {
       isShowEvaluate,
       evaluate,
       filmId,
+      filmStore,
+      saveFilm,
+      unSaveFilm,
     }
   },
 }
 </script>
 
-<style></style>
+<style scoped>
+a:hover {
+  cursor: pointer;
+}
+</style>
