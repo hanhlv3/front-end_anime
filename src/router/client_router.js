@@ -19,6 +19,20 @@ export const client_router = {
       meta: { label: 'default' },
     },
     {
+      name: 'Client-FilmOneEpisode',
+      path: '/film/filmOneEpisode',
+
+      component: () => import('@/views/client/FilmOneEpisode.vue'),
+      meta: { label: 'default' },
+    },
+    {
+      name: 'Client-Search',
+      path: '/search/:keySearch',
+
+      component: () => import('@/views/client/Find.vue'),
+      meta: { label: 'default' },
+    },
+    {
       name: 'Client-Year',
       path: '/year/:year',
 

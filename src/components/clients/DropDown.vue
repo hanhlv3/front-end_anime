@@ -1,17 +1,22 @@
 <template>
   <div class="tab-links">
-    <a href="#" @click.prevent="tabActive = 'category'" class="tab" :class="{ 'tab-active': tabActive == 'category' }"
-      ><i>Thể loại</i></a
+    <a href="#" @click.prevent="tabActive = 'category'" class="tab" :class="{ 'tab-active': tabActive == 'category' }">
+      <i>Thể loại</i>
+    </a>
+    <a href="#" @click.prevent="tabActive = 'year'" class="tab" :class="{ 'tab-active': tabActive == 'year' }">
+      <i>Năm</i>
+    </a>
+    <a href="#" @click.prevent="tabActive = 'filter'" class="tab" :class="{ 'tab-active': tabActive == 'filter' }">
+      <i>Lọc phim</i>
+    </a>
+    <router-link
+      to="/film/filmOneEpisode"
+      class="tab"
+      @click="tabActive = 'single'"
+      :class="{ 'tab-active': tabActive == 'single' }"
     >
-    <a href="#" @click.prevent="tabActive = 'year'" class="tab" :class="{ 'tab-active': tabActive == 'year' }"
-      ><i>Năm</i></a
-    >
-    <a href="#" @click.prevent="tabActive = 'filter'" class="tab" :class="{ 'tab-active': tabActive == 'filter' }"
-      ><i>Lọc phim</i></a
-    >
-    <a href="#" class="tab" @click="tabActive = 'single'" :class="{ 'tab-active': tabActive == 'single' }"
-      ><i>Phim lẻ</i></a
-    >
+      <i>Phim lẻ</i>
+    </router-link>
   </div>
 
   <div class="tab-content">

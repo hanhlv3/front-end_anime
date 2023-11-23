@@ -7,9 +7,9 @@
 
   <div class="cover">
     <div class="search-bar">
-      <form action="#">
-        <input type="text" name="key" id="" class="" placeholder="Search..." required />
-        <button><i class="ti-search"></i></button>
+      <form @submit.prevent="search">
+        <input type="text" name="key" v-model="keySearch" placeholder="Search..." required />
+        <button type="submit"><i class="ti-search"></i></button>
       </form>
     </div>
     <div>
@@ -57,10 +57,12 @@
 <script>
 import { computed, ref } from 'vue'
 import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 export default {
   name: 'NarBar',
   setup(props, context) {
     const store = useStore()
+    const router = useRouter()
     const user = computed(() => {
       return store.state.user.user
     })
@@ -69,17 +71,22 @@ export default {
 
     const toggleAccount = () => (isDropAccount.value = !isDropAccount.value)
     const toggleDrop = () => context.emit('toggleDrop')
+    const keySearch = ref('')
 
     const logout = async () => {
       await store.dispatch('user/logout')
     }
 
+    const search = () => router.push({ name: 'Client-Search', params: { keySearch: keySearch.value } })
+
     return {
       toggleDrop,
       user,
       isDropAccount,
+      keySearch,
       toggleAccount,
       logout,
+      search,
     }
   },
 }

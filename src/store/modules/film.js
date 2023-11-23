@@ -34,7 +34,6 @@ const getters = {
     return listFilms
   },
   getFilmByCategory: (state) => (categoryName) => {
-    console.log('category name', categoryName)
     const listFilms = state.films.filter((film) => {
       for (const cat of film.categories) {
         if (cat.categoryName === categoryName) return true
@@ -44,7 +43,6 @@ const getters = {
     return listFilms
   },
   getFilmByYear: (state) => (year) => {
-    console.log(year)
     let listFilms = state.films.filter((film) => {
       const date = new Date(film.releaseDate)
       const filmYear = date.getFullYear()
@@ -61,6 +59,25 @@ const getters = {
       }
     }
     return filmResult
+  },
+  getFilmByKeySearch: (state) => (keySearch) => {
+    console.log(keySearch)
+    const listFilms = state.films.filter((film) => {
+      for (const cat of film.categories) {
+        if (cat.categoryName.includes(keySearch)) return true
+      }
+      if (film.filmName.includes(keySearch)) return true
+      if (film.releaseDate.includes(keySearch)) return true
+      return false
+    })
+    return listFilms
+  },
+  getFilmOneEpisode: (state) => {
+    const listFilms = state.films.filter((film) => {
+      if (film.episodesQuantity == 1) return true
+      return false
+    })
+    return listFilms
   },
 }
 
