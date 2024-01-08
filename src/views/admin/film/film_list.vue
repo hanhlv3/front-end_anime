@@ -36,7 +36,7 @@
                 <a
                   href="#"
                   class="ml-1 text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-300 dark:hover:text-white"
-                  >Category</a
+                  >Film list</a
                 >
               </div>
             </li>
